@@ -49,7 +49,7 @@ $data = $device->viewDevice($device_id);
 									<!-- service form -->
 
 										<div class="table-wrapper">
-											<table class="alt">
+											<table>
 												<tbody>
 													  <?php
             											foreach($data as $row){
