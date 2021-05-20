@@ -49,16 +49,18 @@ if(isset($_POST['delete'])){
 									<header class="main">
 										<h2>Incoming Requests</h2>
 									</header><br>
-
-									<!-- service form -->
 										<div class="table-wrapper">
-											<table class="alt">
+											<table>
+												<thead>
+													<tr>
+														<th>Type</th>
+														<th>Model</th>
+														<th>Damage</th>
+														<th>Damage Type</th>
+													</tr>
+												</thead>
 												<tbody>
-													<th><center>Type</center></th>
-													<th><center>Model</center></th>
-													<th><center>Damage Type</center></th>
-													<th><center>Action</center></th>
-													  <?php
+												 <?php
             										  $i = 1;
             										  foreach($data as $row){
                										  echo "<tr>"
@@ -66,23 +68,25 @@ if(isset($_POST['delete'])){
                        								. "<td>".$row['device_model']."</td>"
                        								. "<td>".$row['damage_type']."</td>";
                											?>
-               										<td><form action="" method="POST">
+               									<td><form action="" method="POST">
                     								<input type="button" onclick="location.href='viewt_details.php?device_id=<?=$row['device_id']?>'" value="VIEW">&nbsp<form method="POST">
 													<input class="primary-btn order-submit" type="submit" name="submit" value="accept">
 													</form></td></form></td>
-
-               									</tbody>
-               									<?php
+													<?php
                									$i++;
                									echo "</tr>";
                									}
             									?>
-            								</table>
+            								</tbody>
+            							</table>
+            						</div>
+            					</section>
+            				</div>
+            			</div>
+         
 
-								</section>
 
-						</div>
-					</div>
+											
 
 				<!-- Sidebar -->
 					<div id="sidebar">
