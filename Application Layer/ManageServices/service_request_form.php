@@ -58,7 +58,7 @@ if(isset($_POST['submit'])){
 										<h2>Device Information</h2>
 
 										<div class="table-wrapper">
-											<table class="alt">
+											<table>
 												<tbody>
 													<tr>
 														<td>Type</td>
@@ -98,7 +98,7 @@ if(isset($_POST['submit'])){
 									<br>
 										<h2>Damage Information</h2>
 										<div class="table-wrapper">
-											<table class="alt">
+											<table>
 												<tbody>
 													<tr>
 														<td>Damage Type</td>
