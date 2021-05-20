@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2021 at 05:59 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Generation Time: May 20, 2021 at 06:34 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -53,6 +52,22 @@ INSERT INTO `device` (`device_id`, `device_type`, `device_model`, `serialNo`, `d
 (8, 'Laptop', 'Acer', '6714H-001-004HB', 'Windows', 'Data Recovery & Backup', 'I wanted to reset my laptop but I am afraid that I might lose any files'),
 (9, 'Desktop Computer', 'MacBook', '6714H-001-004HB', 'Windows', 'Virus Removal', 'Remove Virus from computer');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `repair_status`
+--
+
+CREATE TABLE `repair_status` (
+  `repair_id` int(11) NOT NULL,
+  `repair_quotation_id` int(11) NOT NULL,
+  `job_performed` varchar(50) NOT NULL,
+  `job_price` float NOT NULL,
+  `repair_cost` float NOT NULL,
+  `repair_status` varchar(20) NOT NULL,
+  `repair_details` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -62,6 +77,12 @@ INSERT INTO `device` (`device_id`, `device_type`, `device_model`, `serialNo`, `d
 --
 ALTER TABLE `device`
   ADD PRIMARY KEY (`device_id`);
+
+--
+-- Indexes for table `repair_status`
+--
+ALTER TABLE `repair_status`
+  ADD PRIMARY KEY (`repair_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
