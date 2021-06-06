@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2021 at 06:34 PM
+-- Generation Time: Jun 06, 2021 at 11:27 AM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,7 +50,26 @@ INSERT INTO `device` (`device_id`, `device_type`, `device_model`, `serialNo`, `d
 (6, 'Desktop Computer', 'MacBook', 'TG710-00-11', 'Mac OS', 'Virus Removal', 'Files deleted without noticing '),
 (7, 'Desktop Computer', 'Acer', 'TG710-00-11', 'Windows', 'Virus Removal', 'Files deleted without notice'),
 (8, 'Laptop', 'Acer', '6714H-001-004HB', 'Windows', 'Data Recovery & Backup', 'I wanted to reset my laptop but I am afraid that I might lose any files'),
-(9, 'Desktop Computer', 'MacBook', '6714H-001-004HB', 'Windows', 'Virus Removal', 'Remove Virus from computer');
+(9, 'Desktop Computer', 'MacBook', '6714H-001-004HB', 'Windows', 'Virus Removal', 'Remove Virus from computer'),
+(10, 'Desktop Computer', 'asdasd', 'asdasdas', 'Windows', 'Data Recovery & Backup', 'asdasdasdasd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pickupdelivery`
+--
+
+CREATE TABLE `pickupdelivery` (
+  `delivery_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `courier_id` int(11) NOT NULL,
+  `delivery_type` text NOT NULL,
+  `delivery_date` date NOT NULL,
+  `delivery_time` text NOT NULL,
+  `delivery_address` text NOT NULL,
+  `delivery_note` text NOT NULL,
+  `delivery_status` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -69,6 +88,13 @@ CREATE TABLE `repair_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `repair_status`
+--
+
+INSERT INTO `repair_status` (`repair_id`, `repair_quotation_id`, `job_performed`, `job_price`, `repair_cost`, `repair_status`, `repair_details`) VALUES
+(1, 232, 'sasdsda', 12312, 232323, 'adasda', 'hjfghfgh');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -77,6 +103,12 @@ CREATE TABLE `repair_status` (
 --
 ALTER TABLE `device`
   ADD PRIMARY KEY (`device_id`);
+
+--
+-- Indexes for table `pickupdelivery`
+--
+ALTER TABLE `pickupdelivery`
+  ADD PRIMARY KEY (`delivery_id`);
 
 --
 -- Indexes for table `repair_status`
@@ -92,7 +124,13 @@ ALTER TABLE `repair_status`
 -- AUTO_INCREMENT for table `device`
 --
 ALTER TABLE `device`
-  MODIFY `device_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `device_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `pickupdelivery`
+--
+ALTER TABLE `pickupdelivery`
+  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
