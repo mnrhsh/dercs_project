@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project-main/Business Services Layer/pickup_delivery_controller.php';
+require_once '../../Business Services Layer/ManagePickupDeliveryController/pickup_delivery_controller.php';
 
 //Test
 //$courier_id = $_SESSION['courier_id'];

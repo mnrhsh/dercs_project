@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project-main/Business Services Layer/pickup_delivery_model.php';
+require_once '../../Business Services Layer/ManagePickupDeliveryModel/pickup_delivery_model.php';
 
 class pickupDeliveryController
 {   
