@@ -3,22 +3,28 @@ require_once '../../Business Services Layer/ServicesModel.php';
 
 class ManageServicesController{
     
-    function add(){
+    function add($customer_id){
         $device = new ManageServicesModel();
-        $device->device_id = $_POST['device_id'];
+        //$device->device_id = $_POST['device_id'];
         $device->device_type = $_POST['device_type'];
         $device->device_model = $_POST['device_model'];
         $device->serialNo = $_POST['serialNo'];
         $device->device_os = $_POST['device_os'];
         $device->damage_type = $_POST['damage_type'];
         $device->damage_desc = $_POST['damage_desc'];
+        $device->customer_id = $customer_id;
         if($device->addDevice() > 0){
             $message = "Success Insert!";
         echo "<script type='text/javascript'>alert('$message');
-        window.location = '../view';</script>";
+        window.location = '../ManageServices/confirm_service_details.php';</script>";
         }
     }
     
+    function viewDetails($customer_id){
+    	$device = new ManageServicesModel();
+      	$device->customer_id = $customer_id;
+      	return $device->viewDetails();
+    }
     function viewAll(){
        $device = new ManageServicesModel();
       return $device->viewallDevice();
