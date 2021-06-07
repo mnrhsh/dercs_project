@@ -5,6 +5,8 @@ $device_id = $_GET['device_id'];
 
 $device = new ManageServicesController();
 $data = $device->viewDevice($device_id); 
+
+
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -79,13 +81,14 @@ $data = $device->viewDevice($device_id);
                 											<td><?=$row['damage_desc']?></td>
             											</tr>
                										 
-               										<td><form action="" method="POST">
-                    								<input type="button" onclick="location.href='view_incoming_requests.php'" value="BACK">
-                </form></td>
+               						
                 								
                									</tbody>
                									<?php } ?>
             								</table>
+            								<form action="" method="POST">
+                    							<input type="button" onclick="location.href='view_incoming_requests.php'" value="BACK">
+                							</form>
 
 								</section>
 
@@ -116,38 +119,14 @@ $data = $device->viewDevice($device_id);
 							<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>Ante interdum</h2>
-									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
-								</section>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
 										<h2>Get in touch</h2>
 									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+									<p>Troubleshooting your computer can be a dreadful task, but here at DERCS our technicians will solve your desktop problems quickly and efficiently, to ensure that your computer is running at peak performance.</p>
 									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
+										<li class="icon solid fa-envelope"><a href="#">dercs.ent@gmail.com</a></li>
+										<li class="icon solid fa-phone">06-2615933</li>
+										<li class="icon solid fa-home">Jalan Mahkota, Kuantan<br />
+										Kuantan, Pahang</li>
 									</ul>
 								</section>
 
