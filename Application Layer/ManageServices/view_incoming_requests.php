@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs/Business Services Layer/ServicesController.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ServicesController.php';
 
 $device = new ManageServicesController();
 $data = $device->viewAll();
