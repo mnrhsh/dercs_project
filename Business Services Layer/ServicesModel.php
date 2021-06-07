@@ -19,8 +19,13 @@ class ManageServicesModel{
     
     //view all damage device service requested for staff
     function viewallDevice(){
-        $sql = "select * from device";
+        $sql = "select * from device where request_status='0'";
         return DB::run($sql);
+    }
+
+    function viewallAccepted(){
+      $sql = "select * from device where request_status='1'";
+      return DB::run($sql);
     }
     
     //view device info for staff

@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
 									</header>
 									<ul>
 										<li><a href="view_incoming_requests.php">INCOMING REQUESTS</a></li>
-										<li><a href="generic.html">APPROVED REQUESTS</a></li>
+										<li><a href="view_approved_request.php">APPROVED REQUESTS</a></li>
 								</nav>
 
 							

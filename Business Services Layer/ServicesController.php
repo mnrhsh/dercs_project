@@ -53,6 +53,11 @@ class ManageServicesController{
       return $device->viewallDevice();
    }
     
+    //staff view all accepted services
+   function viewAllAccepted(){
+      $device = new ManageServicesModel();
+      return $device -> viewallAccepted();
+   }
     //staff view each details of incoming services
     function viewDevice($device_id){
       $device = new ManageServicesModel();
@@ -60,15 +65,7 @@ class ManageServicesController{
       return $device->viewDevice();
     }
 
-    //staff accept request
-  //  function acceptServices(device_id){
-   //   $device = new ManageServicesModel()
-     // $device->device_id=$device_id;
-
-
-
-    //}
-
+    //staff accept service request
     function editRequestStatus($device_id){
 
       $device = new ManageServicesModel();
@@ -78,7 +75,7 @@ class ManageServicesController{
         if($device->modifyRequest()){
             $message = "Request Accepted!";
         echo "<script type='text/javascript'>alert('$message');
-        window.location = 'view_accepted_request.php?device_id=".$_POST['device_id']."';</script>";
+        window.location = 'view_approved_request.php?device_id=".$_POST['device_id']."';</script>";
         }
     }
 
