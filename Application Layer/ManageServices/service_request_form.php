@@ -1,10 +1,16 @@
 <?php
+
+session_start();
 require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ServicesController.php';
+
+//$customer_id = $_SESSION['customer_id'];
+//test
+$customer_id = '1';
 
 $device = new ManageServicesController();
 
 if(isset($_POST['submit'])){
-    $device->add();
+    $device->add($customer_id);
 }
 
 ?>
@@ -19,7 +25,7 @@ if(isset($_POST['submit'])){
 -->
 <html>
 	<head>
-		<title>Dercs Repair</title>
+		<title>DERCS</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../../assets/css/main.css" />
