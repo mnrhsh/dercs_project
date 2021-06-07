@@ -1,12 +1,15 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs/Business Services Layer/ServicesController.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ServicesController.php';
 
 $device = new ManageServicesController();
 $data = $device->viewAll();
 
-if(isset($_POST['delete'])){
-    $device->delete();
+
+if (isset($_POST['submit'])) {
+	$device->editRequestStatus($_POST["device_id"]);
 }
+
+
 
 
 ?>
@@ -56,7 +59,7 @@ if(isset($_POST['delete'])){
 														<th>Type</th>
 														<th>Model</th>
 														<th>Damage</th>
-														<th>Damage Type</th>
+														<th>Action</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -70,7 +73,9 @@ if(isset($_POST['delete'])){
                											?>
                									<td><form action="" method="POST">
                     								<input type="button" onclick="location.href='viewt_details.php?device_id=<?=$row['device_id']?>'" value="VIEW">&nbsp<form method="POST">
-													<input class="primary-btn order-submit" type="submit" name="submit" value="accept">
+
+                    								<input type="submit" name="submit" value="ACCEPT" class="primary" />
+                    								<input type="hidden" name="device_id" value="<?=$row['device_id']?>">
 													</form></td></form></td>
 													<?php
                									$i++;
@@ -82,11 +87,7 @@ if(isset($_POST['delete'])){
             						</div>
             					</section>
             				</div>
-            			</div>
-         
-
-
-											
+            			</div>				
 
 				<!-- Sidebar -->
 					<div id="sidebar">

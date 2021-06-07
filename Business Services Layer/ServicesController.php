@@ -3,6 +3,10 @@ require_once '../../Business Services Layer/ServicesModel.php';
 
 class ManageServicesController{
     
+
+    //********CUSTOMER FUNCTION***********
+
+    //add customer device & damage info
     function add($customer_id){
         $device = new ManageServicesModel();
         //$device->device_id = $_POST['device_id'];
@@ -13,6 +17,7 @@ class ManageServicesController{
         $device->damage_type = $_POST['damage_type'];
         $device->damage_desc = $_POST['damage_desc'];
         $device->customer_id = $customer_id;
+        $device->request_status = 0;
         if($device->addDevice() > 0){
             $message = "Success Insert!";
         echo "<script type='text/javascript'>alert('$message');
@@ -20,34 +25,66 @@ class ManageServicesController{
         }
     }
     
+    //customer view to confirm details
     function viewDetails($customer_id){
     	$device = new ManageServicesModel();
       	$device->customer_id = $customer_id;
       	return $device->viewDetails();
     }
-    function viewAll(){
-       $device = new ManageServicesModel();
-      return $device->viewallDevice();
-   }
-    
-    function viewDevice($device_id){
-      $device = new ManageServicesModel();
-      $device->device_id = $device_id;
-      return $device->viewDevice();
-    }
-    
-   // function editUser(){
+
+     // function editUser(){
       //  $student = new studentModel();
       //  $student->studid = $_POST['studID'];
       //  $student->phone = $_POST['phone'];
       //  $student->residence = $_POST['residence'];
        // if($student->modifyStud()){
        //     $message = "Success Update!";
-		//echo "<script type='text/javascript'>alert('$message');
-		//window.location = '../view/view.php?studID=".$_POST['studID']."';</script>";
+    //echo "<script type='text/javascript'>alert('$message');
+    //window.location = '../view/view.php?studID=".$_POST['studID']."';</script>";
       //  }
    // }
+
+
+    //******STAFF FUNCTION**********
+
+    //staff view all incoming services
+    function viewAll(){
+       $device = new ManageServicesModel();
+      return $device->viewallDevice();
+   }
     
+    //staff view each details of incoming services
+    function viewDevice($device_id){
+      $device = new ManageServicesModel();
+      $device->device_id = $device_id;
+      return $device->viewDevice();
+    }
+
+    //staff accept request
+  //  function acceptServices(device_id){
+   //   $device = new ManageServicesModel()
+     // $device->device_id=$device_id;
+
+
+
+    //}
+
+    function editRequestStatus($device_id){
+
+      $device = new ManageServicesModel();
+      $device->device_id=$device_id;
+      $device->request_status=$request_status;
+        
+        if($device->modifyRequest()){
+            $message = "Request Accepted!";
+        echo "<script type='text/javascript'>alert('$message');
+        window.location = 'view_accepted_request.php?device_id=".$_POST['device_id']."';</script>";
+        }
+    }
+
+    }
+
+  //staff delete incoming requests
    function delete(){
       $device = new ManageServicesModel();
       $device->device_id = $_POST['serialNo'];
@@ -57,5 +94,5 @@ class ManageServicesController{
 		window.location = '../view';</script>";
         }
     }
-}
+
 ?>

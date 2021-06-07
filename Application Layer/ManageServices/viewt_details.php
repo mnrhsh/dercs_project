@@ -1,10 +1,12 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs/Business Services Layer/ServicesController.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ServicesController.php';
 
 $device_id = $_GET['device_id'];
 
 $device = new ManageServicesController();
 $data = $device->viewDevice($device_id); 
+
+
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -79,13 +81,14 @@ $data = $device->viewDevice($device_id);
                 											<td><?=$row['damage_desc']?></td>
             											</tr>
                										 
-               										<td><form action="" method="POST">
-                    								<input type="button" onclick="location.href='view_incoming_requests.php'" value="BACK">
-                </form></td>
+               						
                 								
                									</tbody>
                									<?php } ?>
             								</table>
+            								<form action="" method="POST">
+                    							<input type="button" onclick="location.href='view_incoming_requests.php'" value="BACK">
+                							</form>
 
 								</section>
 
