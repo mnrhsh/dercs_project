@@ -10,7 +10,9 @@ $customer_id = '1';
 $device = new ManageServicesController();
 
 if(isset($_POST['submit'])){
+
     $device->add($customer_id);
+
 }
 
 ?>
@@ -114,6 +116,7 @@ if(isset($_POST['submit'])){
 															<option value="Virus Removal">Virus Removal</option>
 															<option value="Hardware Repairs">Hardware Repairs</option>
 															<option value="Data Recovery & Backup">Data Recovery & Backup</option>
+															<option value="Others">Others (Please state details)</option>
 														</select>
 														</td>
 													</tr>
