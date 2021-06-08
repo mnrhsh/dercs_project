@@ -8,8 +8,16 @@ $customer_id = '1';
 
 $device = new ManageServicesController();
 $data = $device->viewDetails($customer_id); 
-?>
 
+if(isset($_POST['accept'])){
+	$device->accept($customer_id);
+}
+else if(isset($_POST['reject'])){
+	$device = new ManageServicesController();
+    $device->delete($customer_id);
+}
+
+?>
 
 <!DOCTYPE HTML>
 <!--
@@ -51,19 +59,30 @@ $data = $device->viewDetails($customer_id);
 										<h1>Confirm your request</h1>
 									</header>
 
-
-									
+					
 									<!-- service form -->
 									<form id="ServiceForm" method= "post" action="">
-										<h2>Device and Damage Information</h2>
+										<h2>Service Quotation</h2>
 
 										<div class="table-wrapper">
-											<table class="alt">
+											<table>
+												<?php
+            											foreach($data as $row){
+            												$damage = $row['damage_desc'];
+            									?>
+            									<p>Quotation Date : <?=$row['request_date']?> </p>
+
+												<thead>
+													<tr>
+														<th>Type</th>
+														<th>Description</th>
+														<th>Estimation Price</th>
+													</tr>
+												</thead>
 
 												<tbody>
-													<?php
-            											foreach($data as $row){
-            										  ?>
+												
+            									<!--	
 													<tr>
 														<td>Type</td>
 														<td><?=$row['device_type']?>
@@ -76,23 +95,35 @@ $data = $device->viewDetails($customer_id);
 													<tr>
 														<td>Operating System</td>
 														<td><?=$row['device_os']?></td>
-													</tr>
+													</tr>-->
 
 													<tr>
 														<td>Damage Type</td>
 														<td><?=$row['damage_type']?></td>
+														<td></td>
 													</tr>
 													<tr>
 														<td>Damage Description</td>
 														<td><?=$row['damage_desc']?></td>
+														<td></td>
+
+													</tr>
+													<tr>
+														<td></td>
+														<td></td>
+														<td>RM <?=$row['estimate_price']?></td>
 													</tr>
 												</tbody>
 												<?php } ?>
 											</table>
 										</div>
-										
-									
-								
+										<div class="col-12">
+										<ul class="actions">
+											<li><input type="submit" name="accept" value="ACCEPT" class="primary" /></li>
+											<li><input type="submit" name="reject" value="REJECT" class="primary" /></li>
+										</ul>
+										</div>
+
 									</form>
 
 								</section>
