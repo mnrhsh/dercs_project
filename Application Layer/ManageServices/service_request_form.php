@@ -71,27 +71,25 @@ if(isset($_POST['submit'])){
 													<tr>
 														<td>Type</td>
 														<td>
-														<input type="radio" id="desktop" value="Desktop Computer" name="device_type">
+														<input type="radio" id="desktop" value="Desktop Computer" name="device_type" required>
 														<label for="desktop">Desktop Computer</label>
-
-													
 														<input type="radio" id="laptop" value="Laptop" name="device_type">
 														<label for="laptop">Laptop</label>
 														</td>
 													<tr>
 														<td>Model</td>
-														<td><input type="text" name="device_model" id="model" placeholder="Model" /></td>
+														<td><input type="text" name="device_model" id="model" placeholder="Model" required/></td>
 													</tr>
 
 													<tr>
 														<td>Serial Number</td>
-														<td><input type="text" name="serialNo" id="serialNo"  placeholder="Serial Number" /></td>
+														<td><input type="text" name="serialNo" id="serialNo"  placeholder="Serial Number" required/></td>
 													</tr>
 
 													<tr>
 														<td>Operating System</td>
 														<td>
-														<input type="radio" id="windows" value="Windows" name="device_os">
+														<input type="radio" id="windows" value="Windows" name="device_os" required>
 														<label for="windows">Windows</label>
 
 														<input type="radio" id="mac" value="Mac OS" name="device_os">
@@ -111,7 +109,7 @@ if(isset($_POST['submit'])){
 													<tr>
 														<td>Damage Type</td>
 														<td>
-														<select name="damage_type" id="damage_type">
+														<select name="damage_type" id="damage_type" required>
 															<option value="">Select One</option>
 															<option value="Virus Removal">Virus Removal</option>
 															<option value="Hardware Repairs">Hardware Repairs</option>
@@ -122,7 +120,7 @@ if(isset($_POST['submit'])){
 													</tr>
 													<tr>
 														<td>Damage Description</td>
-														<td><textarea name="damage_desc" id="damage_desc" placeholder="Enter your damage details" rows="6"></textarea>
+														<td><textarea name="damage_desc" id="damage_desc" placeholder="Enter your damage details" rows="6" required=""></textarea>
 														<p>Please provide detailed information about your device problems so we can help you out.</p></td>
 													</tbody>
 												</table>
