@@ -81,8 +81,8 @@ if (isset($_POST['submit'])) {
 																</ul>
 															</div>
 															<p>Don't have an account? 
-																<br><a href="customer_register.php">Register here for new customer</a>
-																<br><a href="courier_register.php">Register here for new courier</a>
+																<br><a href="customer_register.php">Register here for new customer</a> OR
+																<a href="courier_register.php">Register here for new courier</a>
 															</p>
 														</div>
 													</form>

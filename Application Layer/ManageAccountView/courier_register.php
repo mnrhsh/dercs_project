@@ -79,7 +79,7 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/M
 																	<li><input type="reset" value="Reset" /></li>
 																</ul>
 															</div>
-															<p>Have already an account? <a href="login.php">Log in here</a></p>
+															<p>Already have an account? <a href="login.php">Log in here</a></p>
 														</div>
 													</form>
 												</div>
