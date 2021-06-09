@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ServicesController.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ManageServicesController/ServicesController.php';
 //Test
 //$customer_id = $_SESSION['customer_id'];
 
