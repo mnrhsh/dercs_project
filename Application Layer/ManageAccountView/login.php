@@ -1,9 +1,9 @@
 <?php
 /*
  Filename: login.php
- Purpose: For login purposes for customer and admin
+ Purpose: For login purposes for customer, courier and staff
 */
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs/Business Services Layer/ManageAccountController/login_controller.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ManageAccountController/login_controller.php';
 session_start();
 if (isset($_POST['submit'])) {
 	// create controller

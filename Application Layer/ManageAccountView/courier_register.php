@@ -3,7 +3,7 @@
  Filename: courier_register.php
  Purpose: Registration form for courier
 */
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs/Business Services Layer/ManageAccountController/controller.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ManageAccountController/controller.php';
 
  $courier = new customerController();
 

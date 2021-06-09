@@ -1,16 +1,19 @@
 <?php
 /*
- Filename: edit_menu.php
- Purpose: For admin to edit menu
+ Filename: customer_edit_profile.php
+ Purpose: For customer to view profile
 */
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs/Business Services Layer/ManageAccountController/login_controller.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ManageAccountController/login_controller.php';
 session_start();
 
-$user = new LoginController();
+$customer_id = $_SESSION ['customer_id'];
 
-// if(isset($_POST['update'])){
-//     $user->editCustomer();
-// }
+$user = new LoginController();
+$data = $user->viewCustomer($customer_id);
+
+if(isset($_POST['update'])){
+    $user->editCustomer();
+}
 
 ?>
 
@@ -53,41 +56,51 @@ $user = new LoginController();
 									<!-- Form -->
 											<div class="col-6 col-12-medium">
 													<form method="POST" enctype='multipart/form-data' onkeydown="return event.key != 'Enter';">
-														
+														<?php
+					            							foreach($data as $row){
+					                					?>
 														<div class="row gtr-uniform">
+															
+															<div class="col-2">
+																<p>Id</p>
+															</div>
+															<div class="col-10 col-12-xsmall">
+																<input class="input" type="text" name="customer_id" value="<?=$row['customer_id']?>" readonly>
+															</div>
+
 															<div class="col-2">
 																<p>Username</p>
 															</div>
 															<div class="col-10 col-12-xsmall">
-																<input type="text" name="customer_username" id="customer_username" value="" placeholder="<?php echo $_SESSION['customer_username'];?>" />
+																<input class="input" type="text" name="customer_username" value="<?=$row['customer_username']?>">
 															</div>
 															
 															<div class="col-2">
 																<p>Password</p>
 															</div>
 															<div class="col-10 col-12-xsmall">
-																<input type="password" name="customer_password" id="customer_password" value="" placeholder="<?php echo $_SESSION['customer_password'];?>" />
+																<input class="input" type="text" name="customer_password" value="<?=$row['customer_password']?>">
 															</div>
 
 															<div class="col-2">
 																<p>Name</p>
 															</div>
 															<div class="col-10 col-12-xsmall">
-																<input type="text" name="customer_name" id="customer_name" value="" placeholder="<?php echo $_SESSION['customer_name'];?>" />
+																<input class="input" type="text" name="customer_name" value="<?=$row['customer_name']?>">
 															</div>
 
 															<div class="col-2">
 																<p>Phone Number</p>
 															</div>
 															<div class="col-10 col-12-xsmall">
-																<input type="text" name="customer_phone" id="customer_phone" value="" placeholder="<?php echo $_SESSION['customer_phone'];?>" />
+																<input class="input" type="text" name="customer_phone" value="<?=$row['customer_phone']?>">
 															</div>
 
 															<div class="col-2">
 																<p>Address</p>
 															</div>
 															<div class="col-10 col-12-xsmall">
-																<input type="text" name="customer_address" id="customer_address" value="" placeholder="<?php echo $_SESSION['customer_address'];?>" />
+																<input class="input" type="text" name="customer_address" value="<?=$row['customer_address']?>">
 															</div>
 															<!-- Break -->
 															<br><br><br><br>
@@ -95,7 +108,7 @@ $user = new LoginController();
 																<ul class="actions">
 																	<li><input type="submit" class="button primary" name="update" id="update" value="Edit" /></li>
 																	
-																	
+																	<?php } ?> 
 																</ul>
 															</div>
 														</div>

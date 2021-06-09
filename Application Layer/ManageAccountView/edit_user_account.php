@@ -1,9 +1,9 @@
 <?php
 /*
- Filename: edit_menu.php
- Purpose: For admin to edit menu
+ Filename: edit_user_account.php
+ Purpose: For admin to edit user account
 */
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs/Business Services Layer/ManageAccountController/controller.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ManageAccountController/controller.php';
 
 $customer_id = $_GET['customer_id'];
 
@@ -127,32 +127,10 @@ if(isset($_POST['update'])){
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
-										<li>
-											<span class="opener">Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
+										<li><a href="#">Service Requests</a></li>
+										<li><a href="user_accounts.php">User Accounts</a></li>
+										<li><a href="#">Cancellation Requests</a></li>
+										<li><a href="logout.php">Logout</a></li>
 									</ul>
 								</nav>
 								

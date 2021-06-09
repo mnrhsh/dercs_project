@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs/libs/database.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/libs/database.php';
 /**
 * Model class for User
 */
@@ -27,12 +27,6 @@ class User
 	public $staff_id;
 	public $staff_username;
 	public $staff_password;
-
-	/**
-	* Static method All()
-	* this method will retrieve all user data in database 
-	* and will return the data as array of user object
-	*/
 
 	public  function validateCustomer($uname,$pwd)
 	{
@@ -208,53 +202,14 @@ class User
 
 	}
 
-	public function registerCustomer()
-	{
-		$query = "INSERT INTO customer (customer_id, customer_username, customer_name, customer_password, customer_phone, customer_address) VALUES (:customer_id, :customer_username, :customer_name, :customer_password, :customer_phone, :customer_address)";
-		$param = [ // the parameter that will be bind by pdo
-		':customer_id' => $this->customer_id,
-		':customer_username' => $this->customer_username,
-		':customer_name, ' => $this->customer_name,
-		':customer_password' => $this->customer_password,
-		':customer_phone' => $this->customer_phone,
-		':customer_address' => $this->customer_address
-	];	
+	function modifyCustomer(){
 
-	try { 
-			// use static method run() from class DB
-	    	if ($stmt = DB::Run($query, $param)) { // we dont use fetch() or fetchAll() here
-			// because no data will be return when we
-			// perform update operation
-	    		return true;
-	    	};
-	    } catch (PDOException $e) {
-	    	return $e->getMessage();
-	    }
-	}
+            $sql = "update customer set  customer_username=:customer_username, customer_password=:customer_password, customer_name=:customer_name, customer_phone=:customer_phone, customer_address=:customer_address where customer_id=:customer_id";
 
-	public function registerCourier()
-	{
-		$query = "INSERT INTO courier (courier_id, courier_username, courier_name, courier_password, courier_phone, courier_address) VALUES (:courier_id, :courier_username, :courier_name, :courier_password, :courier_phone, :courier_address)";
-		$param = [ // the parameter that will be bind by pdo
-		':courier_id' => $this->courier_id,
-		':courier_username' => $this->courier_username,
-		':courier_name, ' => $this->courier_name,
-		':courier_password' => $this->courier_password,
-		':courier_phone' => $this->courier_phone,
-		':courier_address' => $this->courier_address
-	];	
+           $args = [':customer_username'=>$this->customer_username, ':customer_password'=>$this->customer_password,':customer_name'=>$this->customer_name, ':customer_phone'=>$this->customer_phone, ':customer_address'=>$this->customer_address,':customer_id'=>$this->customer_id];
 
-	try { 
-			// use static method run() from class DB
-	    	if ($stmt = DB::Run($query, $param)) { // we dont use fetch() or fetchAll() here
-			// because no data will be return when we
-			// perform update operation
-	    		return true;
-	    	};
-	    } catch (PDOException $e) {
-	    	return $e->getMessage();
-	    }
-	}
+            return DB::run($sql,$args);
+    }
 
 	function viewCustomer(){
         $sql = "select * from customer where customer_id=:customer_id";
@@ -262,16 +217,20 @@ class User
         return DB::run($sql,$args);
     }
 
+    function modifyCourier(){
+      
+            $sql = "update courier set  courier_username=:courier_username, courier_password=:courier_password, courier_name=:courier_name, courier_phone=:courier_phone, courier_address=:courier_address where courier_id=:courier_id";
 
-    function modifyCustomer(){
-
-            $sql = "update customer set  customer_username=:customer_username, customer_password=:customer_password, customer_name=:customer_name, customer_phone=:customer_phone, customer_address=:customer_address where customer_id=:customer_id";
-
-           $args = [':customer_username'=>$this->customer_username, ':customer_password'=>$this->customer_password,':customer_name'=>$this->customer_name, ':customer_phone'=>$this->customer_phone, ':customer_address'=>$this->customer_address,':customer_id'=>$this->customer_id];
-          // }
+           $args = [':courier_username'=>$this->courier_username, ':courier_password'=>$this->courier_password,':courier_name'=>$this->courier_name, ':courier_phone'=>$this->courier_phone, ':courier_address'=>$this->courier_address,':courier_id'=>$this->courier_id];
 
             return DB::run($sql,$args);
-        }
+    }
+
+	function viewCourier(){
+        $sql = "select * from courier where courier_id=:courier_id";
+        $args = [':courier_id'=>$this->courier_id];
+        return DB::run($sql,$args);
+    }
 
 	
 

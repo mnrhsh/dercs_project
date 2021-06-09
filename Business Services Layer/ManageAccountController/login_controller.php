@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs/Business Services Layer/ManageAccountModel/account_model.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ManageAccountModel/account_model.php';
 
 
 class LoginController
@@ -46,9 +46,9 @@ class LoginController
 
         
          if($user->modifyCustomer()){
-            $message = "Success Update!";
+            $message = "Successfully Update!";
         echo "<script type='text/javascript'>alert('$message');
-    window.location = '../ManageAccountView/customer_edit_profile.php?customer_id=".$_POST['customer_id']."';
+    window.location = '../ManageAccountView/customer_edit_profile.php';
     </script>";
         }
     }
@@ -76,6 +76,30 @@ class LoginController
 		 }
 		return $user;
 	}
+
+	function viewCourier($courier_id){
+        $user = new User();
+        $user->courier_id = $courier_id;
+        return $user->viewCourier();
+    }
+
+    function editCourier(){
+        $user = new User();
+        $user->courier_id = $_POST['courier_id'];
+        $user->courier_username = $_POST['courier_username'];
+        $user->courier_password = $_POST['courier_password'];
+        $user->courier_name = $_POST['courier_name'];
+        $user->courier_phone = $_POST['courier_phone'];
+        $user->courier_address = $_POST['courier_address'];
+
+        
+         if($user->modifyCourier()){
+            $message = "Successfully Update!";
+        echo "<script type='text/javascript'>alert('$message');
+    window.location = '../ManageAccountView/courier_edit_profile.php';
+    </script>";
+        }
+    }
 
 	public function loginStaff()
 	{
