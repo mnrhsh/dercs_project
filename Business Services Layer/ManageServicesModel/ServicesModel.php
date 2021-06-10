@@ -48,8 +48,7 @@ class ManageServicesModel{
 
     //confirm service details for customer
     function viewDetails(){
-      //$sql = "select * from device inner join customer on device.customer_id = customer.customer_id";
-      //test
+      
       $sql = "select * from device where device_id=device_id";
       $args = [':device_id'=>$this->device_id];
       return DB::run($sql, $args);
