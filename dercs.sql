@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2021 at 11:27 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Jun 10, 2021 at 08:33 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,6 +25,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `courier`
+--
+
+CREATE TABLE `courier` (
+  `courier_id` int(11) NOT NULL,
+  `courier_username` varchar(255) NOT NULL,
+  `courier_name` varchar(255) NOT NULL,
+  `courier_password` varchar(255) NOT NULL,
+  `courier_phone` varchar(20) NOT NULL,
+  `courier_address` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `courier`
+--
+
+INSERT INTO `courier` (`courier_id`, `courier_username`, `courier_name`, `courier_password`, `courier_phone`, `courier_address`) VALUES
+(1, 'PosLaju', 'Poslaju', 'poslaju123', '0122225402', 'UMP');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
+--
+
+CREATE TABLE `customer` (
+  `customer_id` int(11) NOT NULL,
+  `customer_username` varchar(255) NOT NULL,
+  `customer_name` varchar(255) NOT NULL,
+  `customer_password` varchar(255) NOT NULL,
+  `customer_phone` varchar(20) NOT NULL,
+  `customer_address` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customer_id`, `customer_username`, `customer_name`, `customer_password`, `customer_phone`, `customer_address`) VALUES
+(1, 'mnrhsh', 'Munirah Shamsudin', 'muNirah91098#', '0163224808', 'JB8913, Taman Pahlawan Umbai, 77300 Merlimau, Melaka'),
+(2, 'amiraaisha', 'Amira Aisha', 'amira1234', '0123456789', 'UMP Pekan'),
+(3, 'anisj', 'Anis Julia', 'anis123', '0134301897', 'UMP Gambang');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `device`
 --
 
@@ -34,24 +81,12 @@ CREATE TABLE `device` (
   `serialNo` varchar(20) NOT NULL,
   `device_os` text NOT NULL,
   `damage_type` text NOT NULL,
-  `damage_desc` text NOT NULL
+  `damage_desc` text NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `request_status` tinyint(1) NOT NULL,
+  `request_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `estimate_price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `device`
---
-
-INSERT INTO `device` (`device_id`, `device_type`, `device_model`, `serialNo`, `device_os`, `damage_type`, `damage_desc`) VALUES
-(1, 'on', 'Acer', '6714H-001-004HB', 'on', '', ''),
-(2, 'Laptop', 'Acer', '6714H-001-004HB', 'Windows', '', ''),
-(3, 'Laptop', 'MacBook', 'TG710-00-11', 'Mac OS', '', ''),
-(4, 'Laptop', 'Acer', '6714H-001-004HB', 'Windows', 'virus', 'I dont have antivirus installed in my laptop and my files deleted themselves'),
-(5, 'Laptop', 'Acer', '6714H-001-004HB', 'Windows', 'Hardware Repairs', 'My laptop screen went blank after sleep mode'),
-(6, 'Desktop Computer', 'MacBook', 'TG710-00-11', 'Mac OS', 'Virus Removal', 'Files deleted without noticing '),
-(7, 'Desktop Computer', 'Acer', 'TG710-00-11', 'Windows', 'Virus Removal', 'Files deleted without notice'),
-(8, 'Laptop', 'Acer', '6714H-001-004HB', 'Windows', 'Data Recovery & Backup', 'I wanted to reset my laptop but I am afraid that I might lose any files'),
-(9, 'Desktop Computer', 'MacBook', '6714H-001-004HB', 'Windows', 'Virus Removal', 'Remove Virus from computer'),
-(10, 'Desktop Computer', 'asdasd', 'asdasdas', 'Windows', 'Data Recovery & Backup', 'asdasdasdasd');
 
 -- --------------------------------------------------------
 
@@ -87,22 +122,47 @@ CREATE TABLE `repair_status` (
   `repair_details` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `repair_status`
+-- Table structure for table `staff`
 --
 
-INSERT INTO `repair_status` (`repair_id`, `repair_quotation_id`, `job_performed`, `job_price`, `repair_cost`, `repair_status`, `repair_details`) VALUES
-(1, 232, 'sasdsda', 12312, 232323, 'adasda', 'hjfghfgh');
+CREATE TABLE `staff` (
+  `staff_id` int(11) NOT NULL,
+  `staff_username` varchar(255) NOT NULL,
+  `staff_password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`staff_id`, `staff_username`, `staff_password`) VALUES
+(1, 'staff', 'staff123');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `courier`
+--
+ALTER TABLE `courier`
+  ADD PRIMARY KEY (`courier_id`);
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`customer_id`);
+
+--
 -- Indexes for table `device`
 --
 ALTER TABLE `device`
-  ADD PRIMARY KEY (`device_id`);
+  ADD PRIMARY KEY (`device_id`),
+  ADD KEY `customer_fk` (`customer_id`);
 
 --
 -- Indexes for table `pickupdelivery`
@@ -117,20 +177,44 @@ ALTER TABLE `repair_status`
   ADD PRIMARY KEY (`repair_id`);
 
 --
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`staff_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `courier`
+--
+ALTER TABLE `courier`
+  MODIFY `courier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `device`
 --
 ALTER TABLE `device`
-  MODIFY `device_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `device_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `pickupdelivery`
 --
 ALTER TABLE `pickupdelivery`
   MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `staff`
+--
+ALTER TABLE `staff`
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
