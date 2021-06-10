@@ -9,7 +9,7 @@ class ManageServicesController{
     //add customer device & damage info
     function add($customer_id){
         $device = new ManageServicesModel();
-        $device->device_id = $_POST['device_id'];
+        //$device->device_id = $_POST['device_id'];
         $device->device_type = $_POST['device_type'];
         $device->device_model = $_POST['device_model'];
         $device->serialNo = $_POST['serialNo'];

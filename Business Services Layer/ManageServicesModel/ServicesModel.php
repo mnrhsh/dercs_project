@@ -47,10 +47,16 @@ class ManageServicesModel{
     }
 
     //confirm service details for customer
-    function viewDetails(){
+  //  function viewDetails(){
       
-      $sql = "select * from device where device_id=device_id";
-      $args = [':device_id'=>$this->device_id];
+   //   $sql = "select * from device where device_id=device_id";
+   //   $args = [':device_id'=>$this->device_id];
+    //  return DB::run($sql, $args);
+   // }
+
+    function viewDetails(){
+      $sql = "select * from device where device_id=:device_id and customer_id=:customer_id";
+      $args = [':device_id'=>$this->device_id,':customer_id'=>$this->customer_id];
       return DB::run($sql, $args);
     }
 
