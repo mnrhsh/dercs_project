@@ -7,6 +7,24 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/M
 
 class customerController{
     
+    function generateO_ID()
+    {
+        //generate new custom customer ID
+        // $cust = Model::checkLatestID();
+        // $used_id = $cust->fetch(PDO::FETCH_ASSOC);
+        // $key = "F";
+
+        // if($used_id == null){
+        //     $nextId = "1";
+        //     $cust = $key.str_pad($nextId, 4, "0", STR_PAD_LEFT);
+        // }
+        // else{
+        //     $id = implode("|",$used_id);      
+        //     $nextId = $id+1;
+        //     $cust = $key.str_pad($nextId, 4, "0", STR_PAD_LEFT);
+        // }
+        // return $cust;
+    }
     //Add customer
     function addCustomer(){
         $cust = new customerModel();
