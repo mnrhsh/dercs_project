@@ -3,9 +3,9 @@
 session_start();
 require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ManageServicesController/ServicesController.php';
 
-//$customer_id = $_SESSION['customer_id'];
-//test
-$customer_id = '1';
+$customer_id = $_SESSION['customer_id'];
+
+//$customer_id = '1';
 
 $device = new ManageServicesController();
 
@@ -144,12 +144,7 @@ if(isset($_POST['submit'])){
 					<div id="sidebar">
 						<div class="inner">
 
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
+						
 
 							<!-- Menu -->
 								<nav id="menu">
@@ -157,9 +152,10 @@ if(isset($_POST['submit'])){
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="">Homepage</a></li>
-										<li><a href="">INBOX</a></li>
+										<li><a href="../ManageAccountView/customer_edit_profile.php">PROFILE</a></li>
 										<li><a href="service_request_form.php">REQUEST FOR SERVICE</a></li>
+										<li><a href="">NOTIFICATION</a></li>
+										<li><a href="../ManageAccountView/logout.php">LOGOUT</a></li>
 								
 								</nav>
 

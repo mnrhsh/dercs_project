@@ -50,7 +50,7 @@ class ManageServicesModel{
     function viewDetails(){
       //$sql = "select * from device inner join customers on device.customer_id = customers.customer_id";
       //test
-      $sql = "select * from device where customer_id='1'";
+      $sql = "select * from device where customer_id=customer_id";
       //$args = [':device_id'=>$this->device_id];
       return DB::run($sql);
     }
