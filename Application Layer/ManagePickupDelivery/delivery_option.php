@@ -1,30 +1,26 @@
 <?php
 session_start();
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ServicesController.php';
+require_once '../../Business Services Layer/ManagePickupDeliveryController/pickup_delivery_controller.php';
+
 //Test
 //$customer_id = $_SESSION['customer_id'];
+$customer_id = "1";
 
-$customer_id = '1';
+$addDelivery = new pickupDeliveryController();
 
-$device = new ManageServicesController();
-$data = $device->viewDetails($customer_id); 
+if(isset($_POST['SUBMIT']))
+	{
+		$addDelivery->addDelivery($customer_id);
+	}
 
-if(isset($_POST['accept'])){
-	$device->accept($customer_id);
-}
-else if(isset($_POST['reject'])){
-	$device = new ManageServicesController();
-    $device->delete($customer_id);
-}
-
+else if (isset($_POST['BACK']))
+	{
+		$removeData = new pickupDeliveryController();
+	    $removeData->removeData2($customer_id);
+	}
 ?>
 
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>DERCS</title>
@@ -56,80 +52,59 @@ else if(isset($_POST['reject'])){
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h1>Confirm your request</h1>
+										<h1>Pickup and Delivery Request</h1>
 									</header>
-
-					
+									
 									<!-- service form -->
-									<form id="ServiceForm" method= "post" action="">
-										<h2>Service Quotation</h2>
+									<form id="ServiceForm" method= "POST" action="">
+										<h2>Delivery Option</h2>
 
 										<div class="table-wrapper">
 											<table>
-												<?php
-            											foreach($data as $row){
-            												$damage = $row['damage_desc'];
-            									?>
-            									<p>Quotation Date : <?=$row['request_date']?> </p>
-
-												<thead>
-													<tr>
-														<th>Type</th>
-														<th>Description</th>
-														<th>Estimation Price</th>
-													</tr>
-												</thead>
-
-												<tbody>
-												
-            									<!--	
-													<tr>
-														<td>Type</td>
-														<td><?=$row['device_type']?>
-														</td>
-													<tr>
-														<td>Model</td>
-														<td><?=$row['device_model']?></td>
-													</tr>
-
-													<tr>
-														<td>Operating System</td>
-														<td><?=$row['device_os']?></td>
-													</tr>-->
-
-													<tr>
-														<td>Damage Type</td>
-														<td><?=$row['damage_type']?></td>
-														<td></td>
-													</tr>
-													<tr>
-														<td>Damage Description</td>
-														<td><?=$row['damage_desc']?></td>
-														<td></td>
-
-													</tr>
-													<tr>
-														<td></td>
-														<td></td>
-														<td>RM <?=$row['estimate_price']?></td>
-													</tr>
-												</tbody>
-												<?php } ?>
+											<tbody>
+											 <tr>
+											<td><label>Date</label></td>
+											<td><label>Devices will be sent after finish repairing</label></td>
+											</tr>
+											<tr>
+											<td><label>Time</label></td>
+											<td>
+											<select name="delivery_time" id="delivery_time">
+												<option value="09.00 am">09.00 am</option>
+												<option value="10.00 am">10.00 am</option>
+												<option value="11.00 am">11.00 am</option>
+												<option value="12.00 pm">12.00 pm</option>
+												<option value="01.00 pm">01.00 pm</option>
+												<option value="02.00 pm">02.00 pm</option>
+												<option value="03.00 pm">03.00 pm</option>
+												<option value="04.00 pm">04.00 pm</option>
+												<option value="05.00 pm">05.00 pm</option>
+												<option value="06.00 pm">06.00 pm</option>
+											</select>
+											</tr>
+											<tr>
+											<td><label>Pickup Address</label></td>
+											<td><textarea type="text" id="delivery_address" name="delivery_address"></textarea></td>
+											</tr>
+											<tr>
+											<td><label>Pickup Note</label></td>
+											<td><textarea type="text" id="delivery_note" name="delivery_note"></textarea></td>
+											</tr>
+											</tr>
+											</tbody>
 											</table>
-										</div>
-										<div class="col-12">
-										<ul class="actions">
-											<li><input type="submit" name="accept" value="ACCEPT" class="primary" /></li>
-											<li><input type="submit" name="reject" value="REJECT" class="primary" /></li>
-										</ul>
-										</div>
-
+										</div>	
+											<div class="col-12">
+												<ul class="actions">
+													<li><input type="submit" name="BACK" value="BACK" class="primary" /></li>
+													<li><input type="submit" name="SUBMIT" value="SUBMIT" class="primary" /></li>
 									</form>
-
+									</ul>
+									</div>
 								</section>
 
-						</div>
-					</div>
+				</div>
+				</div>
 
 				<!-- Sidebar -->
 					<div id="sidebar">
@@ -148,12 +123,13 @@ else if(isset($_POST['reject'])){
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.html">HOMEPAGE</a></li>
+										<li><a href="">Homepage</a></li>
 										<li><a href="">INBOX</a></li>
-										<li><a href="service_request_form.html">REQUEST FOR SERVICE</a></li>
-									</ul>
+										<li><a href="../../Application Layer/ManageServices/service_request_form.php">REQUEST FOR SERVICE</a></li>
+										<li><a href="../../Application Layer/ManagePickupDelivery/pickup_option.php">PICKUP DELIVERY SERVICES</a></li>
 								</nav>
 
+							<!-- Section -->
 								<section>
 									<header class="major">
 										<h2>Get in touch</h2>
@@ -176,13 +152,11 @@ else if(isset($_POST['reject'])){
 					</div>
 
 			</div>
-
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
+		<script src="../../assets/js/jquery.min.js"></script>
+		<script src="../../assets/js/browser.min.js"></script>
+		<script src="../../assets/js/breakpoints.min.js"></script>
+		<script src="../../assets/js/util.js"></script>
+		<script src="../../assets/js/main.js"></script>
 	</body>
 </html>

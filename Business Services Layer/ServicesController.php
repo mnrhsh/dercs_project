@@ -1,5 +1,5 @@
 <?php
-require_once '../../Business Services Layer/ManageServicesModel/ServicesModel.php';
+require_once '../../Business Services Layer/ServicesModel.php';
 
 class ManageServicesController{
     
