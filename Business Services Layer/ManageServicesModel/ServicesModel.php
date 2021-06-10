@@ -48,21 +48,21 @@ class ManageServicesModel{
 
     function acceptRequest(){
       $quotation_status = '1';
-      $sql = "update device set device_id=:device_id, quotation_status=:quotation_status
-        where device_id=:device_id";
+      $sql = "update device set customer_id=:customer_id, quotation_status=:quotation_status
+        where customer_id=:customer_id";
 
-        $args = [':device_id' =>$this->device_id, ':quotation_status' =>$quotation_status];
+        $args = [':customer_id' =>$this->customer_id, ':quotation_status' =>$quotation_status];
         return DB::run($sql,$args);
     }
 
     function viewDetails(){
-      $sql = "select * from device where customer_id=:customer_id";
+      $sql = "select * from device where customer_id=:customer_id and quotation_status='0'";
       $args = [':customer_id'=>$this->customer_id];
       return DB::run($sql, $args);
     }
 
     function deleteRequest(){
-      $sql = "delete from device where customer_id=:customer_id";
+      $sql = "delete from device where customer_id=:customer_id and quotation_status='0'";
       $args = [':customer_id'=>$this->customer_id];
      return DB::run($sql,$args);
   }

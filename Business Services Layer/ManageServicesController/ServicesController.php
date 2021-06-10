@@ -18,7 +18,7 @@ class ManageServicesController{
         $device->damage_desc = $_POST['damage_desc'];
         $device->customer_id = $customer_id;
         $device->request_status = 0;
-        $device->quotation_status = 0;
+        
 
         if ($_POST['damage_desc'] == "Hardware Repairs"){
           $device->estimate_price = 150.00;
@@ -33,6 +33,7 @@ class ManageServicesController{
           $device->estimate_price = 30.00;
         }
         
+        $device->quotation_status = 0;
 
         if($device->addDevice() > 0){
             $message = "Thank you for using our service. Please confirm your details and services request!";
@@ -65,9 +66,9 @@ class ManageServicesController{
     }
 
     //customer accept quotation
-    function accept($device_id){
+    function accept($customer_id){
       $device = new ManageServicesModel();
-      $device->device_id=$device_id;
+      $device->customer_id=$customer_id;
       $device->quotation_status=$quotation_status;
 
       if ($device->acceptRequest()){
@@ -75,9 +76,9 @@ class ManageServicesController{
         $message = "Thank you for using our service. Your request has been sent! We will respond to your request within 1 hour.";
       echo "<script type='text/javascript'>alert('$message');
         window.location = '../../Application Layer/ManageServices/service_request_form.php';</script>";
-    }
-
       }
+
+    }
       
 
  
