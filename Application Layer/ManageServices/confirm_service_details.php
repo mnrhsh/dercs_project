@@ -3,6 +3,7 @@ session_start();
 require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ManageServicesController/ServicesController.php';
 //Test
 $customer_id = $_SESSION['customer_id'];
+//$device_id = $_POST['device_id'];
 
 //$customer_id = '1';
 

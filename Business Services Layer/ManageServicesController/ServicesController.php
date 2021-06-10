@@ -42,7 +42,7 @@ class ManageServicesController{
     
     //customer view to confirm details
     function viewDetails($customer_id){
-    	$device = new ManageServicesModel();
+    	 $device = new ManageServicesModel();
       	$device->customer_id = $customer_id;
       	return $device->viewDetails();
     }
