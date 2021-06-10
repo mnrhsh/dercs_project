@@ -121,9 +121,11 @@ if(isset($_POST['delete'])){
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="#">Service Requests</a></li>
-										<li><a href="user_accounts.php">User Accounts</a></li>
+										<li><a href="../ManageServices/view_incoming_requests.php">INCOMING REQUESTS</a></li>
+										<li><a href="../ManageServices/view_approved_request.php">APPROVED REQUESTS</a></li>
 										<li><a href="#">Cancellation Requests</a></li>
+										<li><a href="user_accounts.php">User Accounts</a></li>
+										
 										<li><a href="logout.php">Logout</a></li>
 									</ul>
 								</nav>

@@ -93,12 +93,6 @@ if (isset($_POST['submit'])) {
 					<div id="sidebar">
 						<div class="inner">
 
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
 
 							<!-- Menu -->
 								<nav id="menu">
@@ -108,23 +102,16 @@ if (isset($_POST['submit'])) {
 									<ul>
 										<li><a href="view_incoming_requests.php">INCOMING REQUESTS</a></li>
 										<li><a href="view_approved_request.php">APPROVED REQUESTS</a></li>
+										<li><a href="#">Cancellation Requests</a></li>
+										<li><a href="../ManageAccountView/user_accounts.php">User Accounts</a></li>
+										
+										<li><a href="logout.php">Logout</a></li>
+									</ul>
 								</nav>
 
 							
 
 							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>Troubleshooting your computer can be a dreadful task, but here at DERCS our technicians will solve your desktop problems quickly and efficiently, to ensure that your computer is running at peak performance.</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">dercs.ent@gmail.com</a></li>
-										<li class="icon solid fa-phone">06-2615933</li>
-										<li class="icon solid fa-home">Jalan Mahkota, Kuantan<br />
-										Kuantan, Pahang</li>
-									</ul>
-								</section>
 
 							<!-- Footer -->
 								<footer id="footer">
