@@ -18,6 +18,7 @@ class ManageServicesController{
         $device->damage_desc = $_POST['damage_desc'];
         $device->customer_id = $customer_id;
         $device->request_status = 0;
+        $device->quotation_status = 0;
 
         if ($_POST['damage_desc'] == "Hardware Repairs"){
           $device->estimate_price = 150.00;
@@ -47,6 +48,8 @@ class ManageServicesController{
       	return $device->viewDetails();
     }
 
+
+
     //customer reject quotation
     function delete($customer_id){
       $device = new ManageServicesModel();
@@ -62,11 +65,20 @@ class ManageServicesController{
     }
 
     //customer accept quotation
-    function accept($customer_id){
-      $message = "Thank you for using our service. Your request has been sent! We will respond to your request within 1 hour.";
+    function accept($device_id){
+      $device = new ManageServicesModel();
+      $device->device_id=$device_id;
+      $device->quotation_status=$quotation_status;
+
+      if ($device->acceptRequest()){
+        //fgfg;
+        $message = "Thank you for using our service. Your request has been sent! We will respond to your request within 1 hour.";
       echo "<script type='text/javascript'>alert('$message');
         window.location = '../../Application Layer/ManageServices/service_request_form.php';</script>";
     }
+
+      }
+      
 
  
     //******STAFF FUNCTION**********
