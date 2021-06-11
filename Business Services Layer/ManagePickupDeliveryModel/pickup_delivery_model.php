@@ -31,21 +31,12 @@ function connect()
 
     //View Pickup and Delivery Request Available 
     function viewRequestAvailable(){
-         $sql = "select * from pickupdelivery inner join customer on pickupdelivery.customer_id = customer.customer_id where courier_id = :courier_id";
+         $sql = "select * from pickupdelivery inner join customer on pickupdelivery.customer_id = customer.customer_id where courier_id = :courier_id ORDER BY delivery_date";
         $args = [':courier_id'=>$this->courier_id];
         $stmt = pickupDeliveryModel::connect()->prepare($sql);
         $stmt->execute($args);
         return $stmt;
         }
-
-    //Test kalau ada repair_id dari repair_status table 
-    // function viewRequestAvailable(){
-    //         $sql = "select * from pickupdelivery inner join customer inner join repair_status inner on pickupdelivery.customer_id = customer.customer_id and pickupdelivery.repaid_id = repair_status.repaid_id and where pickupdelivery.repaid_id=:"Compeleted" and pickupdelivery.courier_id = :courier_id";
-    //         $args = [':courier_id'=>$this->courier_id];
-    //         $stmt = pickupDeliveryModel::connect()->prepare($sql);
-    //         $stmt->execute($args);
-    //         return $stmt;
-    //     }
 
     //View Selected Request Info
     function viewRequestInfo(){
@@ -67,7 +58,7 @@ function connect()
 
     //View Accepted Request 
     function viewAcceptedRequest(){
-        $sql = "select * from pickupdelivery inner join customer on pickupdelivery.customer_id = customer.customer_id where courier_id = :courier_id";
+        $sql = "select * from pickupdelivery inner join customer on pickupdelivery.customer_id = customer.customer_id where courier_id = :courier_id ORDER BY delivery_date";
         $args = [':courier_id'=>$this->courier_id];
         $stmt = pickupDeliveryModel::connect()->prepare($sql);
         $stmt->execute($args);

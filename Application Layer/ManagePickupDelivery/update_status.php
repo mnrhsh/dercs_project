@@ -2,9 +2,7 @@
 session_start();
 require_once '../../Business Services Layer/ManagePickupDeliveryController/pickup_delivery_controller.php';
 
-//Test
-//$courier_id = $_SESSION['courier_id'];
-$courier_id = "1";
+$courier_id = $_SESSION['courier_id'];
 
 $delivery_id = $_GET['delivery_id'];
 
@@ -62,7 +60,7 @@ else if(isset($_POST['DELIVERED'])){
 									<!-- service form -->
 									<form id="ServiceForm" method= "post" action="">
 										<?php
-											foreach ($data as $row) {
+										foreach ($data as $row) {
 										if( $row['delivery_type'] != 'Pickup' )  {
 										?>
 										<h2>Delivery Request Information</h2>
@@ -78,18 +76,17 @@ else if(isset($_POST['DELIVERED'])){
 											<td style="text-align: left; width: 300px;">
 										    <table class="center">
 											
-											<tr>									
-											<td><label>Date</label></td>
-											<td><label> 
-											<?php if( $row['delivery_type'] != 'Pickup' )  {
+											<tr>
+											<?php
+											if( $row['delivery_type'] != 'Pickup' )  {
 											?>
-											Deliver Today
+											<td><label>Date for Delivery</label></td>
 											<?php } 
 											else {
 											?>
-											<?=$row['delivery_date']?>
+											<td><label>Date for Pickup</label></td>
 											<?php } ?>
-											</label></td>
+											<td><label><?=$row['delivery_date']?></label></td>
 											</tr>
 											<tr>
 											<td><label>Customer Name</label></td>
@@ -148,12 +145,12 @@ else if(isset($_POST['DELIVERED'])){
 					<h2>Menu</h2>
 					</header>
 					<ul>
-					<li><a href="index.html">Homepage</a></li>
-					<li><a href="../../Application Layer/ManagePickupDelivery/pickup_delivery_request.php">Pickup Delivery Request</a></li>
-					<li><a href="../../Application Layer/ManagePickupDelivery/view_accepted_request.php">Accepted Request</a></li>
-					<li><a href="#">Profile</a></li>
-					<li><a href="#">Logout</a></li>
-				</ul>
+										<li><a href="../../Application Layer/ManageAccountView/courier_edit_profile.php">Profile</a></li>
+										<li><a href="../../Application Layer/ManagePickupDelivery/pickup_delivery_request.php">Pickup Delivery Request</a></li>
+										<li><a href="../../Application Layer/ManagePickupDelivery/view_accepted_request.php">Accepted Request</a></li>
+										<li><a href="../../Application Layer/ManageAccountView/logout.php">Logout</a></li>
+									</ul>
+								</nav>
 			</nav>
 
 		<section>
