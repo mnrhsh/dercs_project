@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2021 at 08:33 PM
+-- Generation Time: Jun 11, 2021 at 05:41 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -85,8 +85,16 @@ CREATE TABLE `device` (
   `customer_id` int(11) NOT NULL,
   `request_status` tinyint(1) NOT NULL,
   `request_date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `estimate_price` double NOT NULL
+  `estimate_price` double NOT NULL,
+  `quotation_status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `device`
+--
+
+INSERT INTO `device` (`device_id`, `device_type`, `device_model`, `serialNo`, `device_os`, `damage_type`, `damage_desc`, `customer_id`, `request_status`, `request_date`, `estimate_price`, `quotation_status`) VALUES
+(111, 'Laptop', 'MacBook', 'MCP-01-001-A', 'Windows', 'Hardware Repairs', 'Screen cracked', 1, 0, '2021-06-10 20:57:27', 30, 1);
 
 -- --------------------------------------------------------
 
@@ -202,7 +210,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `device`
 --
 ALTER TABLE `device`
-  MODIFY `device_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `device_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `pickupdelivery`
