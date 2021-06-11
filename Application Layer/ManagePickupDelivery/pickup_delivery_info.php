@@ -2,18 +2,23 @@
 session_start();
 require_once '../../Business Services Layer/ManagePickupDeliveryController/pickup_delivery_controller.php';
 
+//User session
 $courier_id = $_SESSION['courier_id'];
 
+//Obtain delivery id that has been sent from the previous page (pickup_delivery_request.php)
 $delivery_id = $_GET['delivery_id'];
 
 $viewRequestInfo =  new pickupDeliveryController();
+//Request view request info based on delivery_id that has been sent and retrieve it
 $data = $viewRequestInfo->viewRequestInfo($delivery_id);
 
+//Code for <<ACCEPT>> button
+//Assign the courier to the request
+//Update courier_id = 0 to courier_id = courier_id 
 if(isset($_POST['ACCEPT'])){
 	$acceptRequest =  new pickupDeliveryController();
 	$acceptRequest->acceptRequest($courier_id);
 }	
-
 ?>
 
 <!DOCTYPE HTML>
@@ -50,10 +55,10 @@ if(isset($_POST['ACCEPT'])){
 									<header class="main">
 										<!-- <h1>Pickup and Delivery Information</h1> -->
 									</header>									
-									<!-- service form -->
-									<form id="ServiceForm" method= "post" action="">
+									<form id="InfoForm" method= "post" action="">
 										<?php
 											foreach ($data as $row) {
+										// Display title based on the delivery_type
 										if( $row['delivery_type'] != 'Pickup' )  {
 										?>
 										<h2>Delivery Request Information</h2>
@@ -62,7 +67,7 @@ if(isset($_POST['ACCEPT'])){
 										?>
 										<h2>Pickup Request Information</h2>
 										<?php } ?>
-										<!-- Pickup and Delivery Info Form Here -->
+										<!-- Pickup Form Code -->
 										<div class="table-wrapper">
 											<table class="alt">
 											<body>
@@ -72,6 +77,7 @@ if(isset($_POST['ACCEPT'])){
 											<tr>
 											<?php
 											if( $row['delivery_type'] != 'Pickup' )  {
+											// Display title based on the delivery_type
 											?>
 											<td><label>Date for Delivery</label></td>
 											<?php } 

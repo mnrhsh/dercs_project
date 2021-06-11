@@ -16,6 +16,7 @@ class pickupDeliveryController
         $addPickup->delivery_address = $_POST['delivery_address'];
         $addPickup->delivery_note = $_POST['delivery_note'];
         $addPickup->delivery_status = "Requested";
+        //put payment link 
         if($addPickup->addPickup()){
             $message = "Request Successfully!";
         echo "<script type='text/javascript'>alert('$message');
@@ -62,6 +63,7 @@ class pickupDeliveryController
         $addDelivery->delivery_address = $_POST['delivery_address'];
         $addDelivery->delivery_note = $_POST['delivery_note'];
         $addDelivery->delivery_status = "Requested";
+        //put payment link 
         if($addDelivery->addDelivery()){
             $message = "Request Successfully!";
         echo "<script type='text/javascript'>alert('$message');
@@ -81,7 +83,7 @@ class pickupDeliveryController
         $removeData->delivery_status = "Requested"; 
         if($removeData->removeData()){
             $message = "Skip Pickup and Delivery!";
-        //letak link payment
+        //put payment link 
         echo "<script type='text/javascript'>alert('$message');
         window.location = '../../Application Layer/ManagePickupDelivery/pickup_option.php';</script>";
         }
@@ -98,14 +100,9 @@ class pickupDeliveryController
         $removeData->customer_id = $customer_id;
         $removeData->delivery_status = "Requested"; 
         if($removeData->removeData()){
-            $message = "Returning to the Pickup Option Page";
-        echo "<script type='text/javascript'>alert('$message');
-        window.location = '../../Application Layer/ManagePickupDelivery/pickup_option.php';</script>";
-        }
-        else{
-            $message = "Unable to return to the Pickup Option Page";
-        echo "<script type='text/javascript'>alert('$message');
-        window.location = '../../Application Layer/ManagePickupDelivery/pickup_option.php';</script>";
+        echo "<script type='text/javascript'>
+        window.location = '../../Application Layer/ManagePickupDelivery/pickup_option.php';
+        </script>";
         }
     }
 
@@ -127,7 +124,7 @@ class pickupDeliveryController
     function acceptRequest($courier_id){
         $acceptRequest = new pickupDeliveryModel();
         $acceptRequest->courier_id = $courier_id;
-        $acceptRequest->delivery_status = "Pick Up"; 
+        $acceptRequest->delivery_status = "ACCEPT"; 
         $acceptRequest->delivery_id = $_GET['delivery_id'];
         if($acceptRequest->acceptRequest()){
             $message = "Request Accepted!";
@@ -154,6 +151,5 @@ class pickupDeliveryController
         window.location = '../../Application Layer/ManagePickupDelivery/view_accepted_request.php';</script>";
         }
     }
-
 }
 ?>

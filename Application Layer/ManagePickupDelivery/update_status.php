@@ -2,19 +2,23 @@
 session_start();
 require_once '../../Business Services Layer/ManagePickupDeliveryController/pickup_delivery_controller.php';
 
+//User session
 $courier_id = $_SESSION['courier_id'];
 
+//Obtain delivery id that has been sent from the previous page (view_accepted_request.php)
 $delivery_id = $_GET['delivery_id'];
 
 $viewRequestInfo =  new pickupDeliveryController();
+//Request accepted request info based on delivery_id that has been sent and retrieve it
 $data = $viewRequestInfo->viewRequestInfo($delivery_id);
 
-
+//Code for <<PICKED UP>> button
 if(isset($_POST['PICKEDUP'])){
 	$updateStatus =  new pickupDeliveryController();
 	$delivery_status = "Picked Up"; 
 	$updateStatus->updateStatus($delivery_status);
-}	
+}
+//Code for <<DELIVERED>> button
 else if(isset($_POST['DELIVERED'])){
 	$updateStatus =  new pickupDeliveryController();
 	$delivery_status = "Delivered";
@@ -57,8 +61,8 @@ else if(isset($_POST['DELIVERED'])){
 									<header class="main">
 										<!-- <h1>Update Status</h1> -->
 									</header>									
-									<!-- service form -->
-									<form id="ServiceForm" method= "post" action="">
+									<!-- UpdateForm form -->
+									<form id="UpdateForm" method= "post" action="">
 										<?php
 										foreach ($data as $row) {
 										if( $row['delivery_type'] != 'Pickup' )  {
@@ -117,14 +121,18 @@ else if(isset($_POST['DELIVERED'])){
 
 						<li><input type="button" value="BACK" class="primary" onclick="location.href='../../Application Layer/ManagePickupDelivery/view_accepted_request.php'">
 						<?php
-							if( $row['delivery_type'] != 'Pickup' && $row['delivery_status'] == 'Pick Up')  {
+						// Display button based on the delivery_type and delivery_status
+						//Display DELIVERED BUTTON
+							if( $row['delivery_type'] != 'Pickup' && $row['delivery_status'] == 'ACCEPT')  {
 						?>
 							<li><input type="submit" name="DELIVERED" value="DELIVERED" class="primary" /></li>
 						<?php } 
-							if ( $row['delivery_type'] != 'Delivery' && $row['delivery_status'] == 'Pick Up'){
+						//Display PICKEDUP BUTTON
+							if ( $row['delivery_type'] != 'Delivery' && $row['delivery_status'] == 'ACCEPT'){
 						?>	
 							<li><input type="submit" name="PICKEDUP" value="PICKED UP" class="primary" /></li>
 						<?php } 
+						//Display COMPLETED BUTTON
 							if ( $row['delivery_status'] == 'Picked Up' || $row['delivery_status'] == 'Delivered' ){
 						?>	
 						<li><input type="button" value="COMPLETED" class="primary" onclick="location.href='../../Application Layer/ManagePickupDelivery/view_accepted_request.php'">	
