@@ -1,5 +1,8 @@
 <?php
-
+/*
+ Filename: login_controller.php
+ Purpose: Controller page for login and user profile
+*/
 require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ManageAccountModel/account_model.php';
 
 

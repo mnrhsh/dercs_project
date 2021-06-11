@@ -1,7 +1,8 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/libs/database.php';
-/**
-* Model class for User
+/*
+ Filename: account_model.php
+ Purpose: for login and user profile
 */
 class User
 {
@@ -81,126 +82,7 @@ class User
 	    	return $e->getMessage();
 	    }
 	}
-
-			
-
-	public static function All()
-	{
-		$query = "SELECT * FROM customer";
-		try {
-			// use static method run() from class DB 
-	    	if ($stmt = DB::run($query)) { // this will run the build query
-	    		// assign all of the data fetch from database to variable data
-				$user = $stmt->fetchAll(PDO::FETCH_ASSOC); // need to add fetchAll for pdo 
-				// in order for pdo to retrieve the data from database
-				// return the array of users filled with user array
-				return $user;
-			};
-		} catch (PDOException $e) {
-			return $e->getMessage();
-		}
-
-		$query = "SELECT * FROM courier";
-		try {
-			// use static method run() from class DB 
-	    	if ($stmt = DB::run($query)) { // this will run the build query
-	    		// assign all of the data fetch from database to variable data
-				$user = $stmt->fetchAll(PDO::FETCH_ASSOC); // need to add fetchAll for pdo 
-				// in order for pdo to retrieve the data from database
-				// return the array of users filled with user array
-				return $user;
-			};
-		} catch (PDOException $e) {
-			return $e->getMessage();
-		}
-
-		$query = "SELECT * FROM staff";
-		try {
-			// use static method run() from class DB 
-	    	if ($stmt = DB::run($query)) { // this will run the build query
-	    		// assign all of the data fetch from database to variable data
-				$user = $stmt->fetchAll(PDO::FETCH_ASSOC); // need to add fetchAll for pdo 
-				// in order for pdo to retrieve the data from database
-				// return the array of users filled with user array
-				return $user;
-			};
-		} catch (PDOException $e) {
-			return $e->getMessage();
-		}
-	}
-
-	public static function checkCustLatestID()
-	{
-		$query = "SELECT substr(customer_id,-4) as code FROM customer order by customer_id DESC LIMIT 1";
-		return DB::run($query);
-	}
-
-	public static function checkCourierLatestID()
-	{
-		$query = "SELECT substr(courier_id,-4) as code FROM courier order by courier_id DESC LIMIT 1";
-		return DB::run($query);
-	}
-
-	public static function checkStaffLatestID()
-	{
-		$query = "SELECT substr(staff_id,-4) as code FROM staff order by staff_id DESC LIMIT 1";
-		return DB::run($query);
-	}
-
-	/**
-	* Static method getById()
-	* this method will retrieve 1 row of data from database
-	* based on the id passed to the method
-	* @param int id
-	*/
-	public static function getById($id)
-	{
-		$query = "SELECT * FROM customer WHERE customer_id = :customer_id LIMIT 1";
-		$param = [':customer_id' => $customer_id]; // the parameter that will be bind by pdo
-		try {
-			// use static method run() from class DB 
-	    	if ($stmt = DB::Run($query, $param)) { // this will run the build query
-				// need to use fetch to retrieve only 1 row of data
-				$user = $stmt->fetch(PDO::FETCH_ASSOC); // this will retrieve the row of data
-													    // that is associated to the passed id
-				// return the user object
-				return $user;
-			};
-		} catch (PDOException $e) {
-			return $e->getMessage();
-		}
-
-		$query = "SELECT * FROM courier WHERE courier_id = :courier_id LIMIT 1";
-		$param = [':courier_id' => $courier_id]; // the parameter that will be bind by pdo
-		try {
-			// use static method run() from class DB 
-	    	if ($stmt = DB::Run($query, $param)) { // this will run the build query
-				// need to use fetch to retrieve only 1 row of data
-				$user = $stmt->fetch(PDO::FETCH_ASSOC); // this will retrieve the row of data
-													    // that is associated to the passed id
-				// return the user object
-				return $user;
-			};
-		} catch (PDOException $e) {
-			return $e->getMessage();
-		}
-
-		$query = "SELECT * FROM staff WHERE staff_id = :staff_id LIMIT 1";
-		$param = [':staff_id' => $staff_id]; // the parameter that will be bind by pdo
-		try {
-			// use static method run() from class DB 
-	    	if ($stmt = DB::Run($query, $param)) { // this will run the build query
-				// need to use fetch to retrieve only 1 row of data
-				$user = $stmt->fetch(PDO::FETCH_ASSOC); // this will retrieve the row of data
-													    // that is associated to the passed id
-				// return the user object
-				return $user;
-			};
-		} catch (PDOException $e) {
-			return $e->getMessage();
-		}
-
-	}
+	
 
 	function modifyCustomer(){
 

@@ -1,19 +1,13 @@
 <?php
 /*
  Filename: model.php
- Purpose: Entity Class for account model
+ Purpose: for user account and registration
 */
 require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/libs/database.php';
 
 class customerModel{
    
     public $customer_id, $customer_username, $customer_name, $customer_password, $customer_phone, $customer_address;
-
-    public static function checkCustomerLatestID()
-    {
-        $query = "SELECT substr(customer_id,-4) as code FROM customer order by customer_id DESC LIMIT 1";
-        return DB::run($query);
-    }
     
     //Function to add customer
     function addCustomer(){
@@ -46,21 +40,21 @@ class customerModel{
     
     }    
     
-    //Function to view all 
+    //Function to view all cust acc
     function viewall(){
         $sql = "select * from customer";
         return DB::run($sql);
     }
 
 
-   //Function to view details  
+   //Function to view cust acc details  
     function viewCustomer(){
         $sql = "select * from customer where customer_id=:customer_id";
         $args = [':customer_id'=>$this->customer_id];
         return DB::run($sql,$args);
     }
     
-    //Fucntion to edit details
+    //Fucntion to edit cust details
     function modifyCustomer(){
       
 
@@ -71,7 +65,7 @@ class customerModel{
             return DB::run($sql,$args);
         }
     
-    //Function to delete 
+    //Function to delete cust acc
     function deleteMenu(){
         $sql = "delete from customer where customer_id=:customer_id";
         $args = [':customer_id'=>$this->customer_id];
