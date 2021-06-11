@@ -57,7 +57,7 @@ class pickupDeliveryController
         $addDelivery->customer_id = $customer_id;
         $addDelivery->courier_id = "0"; 
         $addDelivery->delivery_type = "Delivery"; 
-        $addDelivery->delivery_date = 2021-07-01;
+        $addDelivery->delivery_date = $_POST['delivery_date'];
         $addDelivery->delivery_time = $_POST['delivery_time'];
         $addDelivery->delivery_address = $_POST['delivery_address'];
         $addDelivery->delivery_note = $_POST['delivery_note'];

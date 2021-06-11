@@ -2,9 +2,7 @@
 session_start();
 require_once '../../Business Services Layer/ManagePickupDeliveryController/pickup_delivery_controller.php';
 
-//Test
-//$customer_id = $_SESSION['customer_id'];
-$customer_id = "1";
+$customer_id = $_SESSION['customer_id'];
 
 $addPickup = new pickupDeliveryController();
 
@@ -130,10 +128,10 @@ else if (isset($_POST['SKIP']))
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="">Homepage</a></li>
-										<li><a href="">INBOX</a></li>
-										<li><a href="../../Application Layer/ManageServices/service_request_form.php">REQUEST FOR SERVICE</a></li>
-										<li><a href="../../Application Layer/ManagePickupDelivery/pickup_option.php">PICKUP DELIVERY SERVICES</a></li>
+										<li><a href="../ManageAccountView/customer_edit_profile.php">PROFILE</a></li>
+										<li><a href="service_request_form.php">REQUEST FOR SERVICE</a></li>
+										<li><a href="">NOTIFICATION</a></li>
+										<li><a href="../ManageAccountView/logout.php">LOGOUT</a></li>
 								</nav>
 
 							<!-- Section -->
