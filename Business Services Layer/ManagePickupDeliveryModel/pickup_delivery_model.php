@@ -2,7 +2,7 @@
 
 class pickupDeliveryModel{
 
-//Function connection to database
+//Function connect to database
 function connect()
 {
     $pdo = new PDO('mysql:host=localhost;dbname=dercs', 'root', '');
@@ -18,7 +18,6 @@ function connect()
         $stmt->execute($args);
         return $stmt;
     }
-
 
     //Add Delivery Data
     function addDelivery(){
@@ -58,7 +57,7 @@ function connect()
 
     //View Accepted Request 
     function viewAcceptedRequest(){
-        $sql = "select * from pickupdelivery inner join customer on pickupdelivery.customer_id = customer.customer_id where courier_id = :courier_id ORDER BY delivery_date";
+        $sql = "select * from pickupdelivery inner join customer on pickupdelivery.customer_id = customer.customer_id where courier_id = :courier_id ORDER BY delivery_date DESC";
         $args = [':courier_id'=>$this->courier_id];
         $stmt = pickupDeliveryModel::connect()->prepare($sql);
         $stmt->execute($args);
@@ -82,6 +81,5 @@ function connect()
         $stmt->execute($args);
         return $stmt;
     }
-
 }
 ?>

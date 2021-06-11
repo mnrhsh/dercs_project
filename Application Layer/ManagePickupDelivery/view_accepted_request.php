@@ -2,9 +2,12 @@
 session_start();
 require_once '../../Business Services Layer/ManagePickupDeliveryController/pickup_delivery_controller.php';
 
+//User session
 $courier_id = $_SESSION['courier_id'];
 
 $viewAcceptedRequest =  new pickupDeliveryController();
+
+//Request accepted request data based on courier_id that has been sent and retrieve it
 $data = $viewAcceptedRequest->viewAcceptedRequest($courier_id);
 ?>
 
@@ -42,8 +45,8 @@ $data = $viewAcceptedRequest->viewAcceptedRequest($courier_id);
 									<header class="main">
 										<!-- <h1>Accepted Request</h1> -->
 									</header>									
-									<!-- service form -->
-									<form id="ServiceForm" method= "post" action="">
+									<!-- AcceptForm form -->
+									<form id="AcceptForm" method= "post" action="">
 										<h2>Accepted Request</h2>
 
 										<!-- Accepted Request Form Here -->
@@ -70,12 +73,15 @@ $data = $viewAcceptedRequest->viewAcceptedRequest($courier_id);
 												<div class="col-12">
 												<ul class="actions">
 												<?php
-													if($row['delivery_status'] == 'Pick Up')  {
+												// Display button based on the delivery_status
+													if($row['delivery_status'] == 'ACCEPT')  {
 												?>
+												<!-- Code for <<VIEW>> button -->
 													<li><input type="button" class="primary" onclick="location.href='../../Application Layer/ManagePickupDelivery/update_status.php?delivery_id=<?=$row['delivery_id']?>'"  value="VIEW">&nbsp</li>
 												<?php } 
 													else {
 												?>
+												<!-- Code for <<COMPLETED>> button -->
 													<li><input type="button" class="primary" onclick="location.href='../../Application Layer/ManagePickupDelivery/update_status.php?delivery_id=<?=$row['delivery_id']?>'"  value="COMPLETED">&nbsp</li>
 												<?php } ?>
 												</ul>

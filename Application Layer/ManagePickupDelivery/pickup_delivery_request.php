@@ -2,9 +2,13 @@
 session_start();
 require_once '../../Business Services Layer/ManagePickupDeliveryController/pickup_delivery_controller.php';
 
+//User session
 $courier_id = $_SESSION['courier_id'];
 
 $viewRequestAvailable =  new pickupDeliveryController();
+
+//Retrieve all request that has not been taken by any courier from the database
+//courier_id = 0;
 $data = $viewRequestAvailable->viewRequestAvailable();
 ?>
 
@@ -42,8 +46,8 @@ $data = $viewRequestAvailable->viewRequestAvailable();
 									<header class="main">
 										<!-- <h1>Pickup and Delivery Request</h1> -->
 									</header>									
-									<!-- service form -->
-									<form id="ServiceForm" method= "post" action="../../Application Layer/ManagePickupDelivery/pickup_delivery_info.php">
+									<!-- RequestForm -->
+									<form id="RequestForm" method= "post" action="../../Application Layer/ManagePickupDelivery/pickup_delivery_info.php">
 										<h2>Pickup and Delivery Request</h2>
 
 										<!-- Pickup and Delivery Request Form Here -->
@@ -69,6 +73,7 @@ $data = $viewRequestAvailable->viewRequestAvailable();
 											<td>
 												<div class="col-12">
 												<ul class="actions">
+												<!-- Code for <<VIEW>> button -->
 													<li><input type="button" class="primary" onclick="location.href='../../Application Layer/ManagePickupDelivery/pickup_delivery_info.php?delivery_id=<?=$row['delivery_id']?>'"  value="VIEW">&nbsp</li>
 
 												</ul>

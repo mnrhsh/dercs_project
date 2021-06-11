@@ -2,15 +2,18 @@
 session_start();
 require_once '../../Business Services Layer/ManagePickupDeliveryController/pickup_delivery_controller.php';
 
+//User session
 $customer_id = $_SESSION['customer_id'];
 
 $addDelivery = new pickupDeliveryController();
 
+// Code for <<SUBMIT>> button
 if(isset($_POST['SUBMIT']))
 	{
 		$addDelivery->addDelivery($customer_id);
 	}
 
+// Code for <<BACK>> button
 else if (isset($_POST['BACK']))
 	{
 		$removeData = new pickupDeliveryController();
@@ -53,10 +56,10 @@ else if (isset($_POST['BACK']))
 										<h1>Pickup and Delivery Request</h1>
 									</header>
 									
-									<!-- service form -->
-									<form id="ServiceForm" method= "POST" action="">
+									<!-- DeliveryForm form -->
+									<form id="DeliveryForm" method= "POST" action="">
 										<h2>Delivery Option</h2>
-
+										<!-- Delivery Form Code -->
 										<div class="table-wrapper">
 											<table>
 											<tbody>

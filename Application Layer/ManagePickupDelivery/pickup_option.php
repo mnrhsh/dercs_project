@@ -2,20 +2,24 @@
 session_start();
 require_once '../../Business Services Layer/ManagePickupDeliveryController/pickup_delivery_controller.php';
 
+//User session
 $customer_id = $_SESSION['customer_id'];
 
 $addPickup = new pickupDeliveryController();
 
+// Code for <<PICKUP ONLY>> button
 if(isset($_POST['PICKUP']))
 	{
 		$addPickup->addPickup($customer_id);
 	}
 
+// Code for <<PICKUP AND DELIVERY>> button
 else if (isset($_POST['DELIVERY']))
 	{
 	    $addPickup->addPickup2($customer_id);
 	}
 
+// Code for <<SUBMIT>> button
 else if (isset($_POST['SKIP']))
 	{
 		$removeData = new pickupDeliveryController();
@@ -58,8 +62,8 @@ else if (isset($_POST['SKIP']))
 										<h1>Pickup and Delivery Request</h1>
 									</header>
 									
-									<!-- service form -->
-									<form id="ServiceForm" method= "POST" action="">
+									<!-- PickupForm form -->
+									<form id="PickupForm" method= "POST" action="">
 										<h2>Pickup Option</h2>
 
 										<div class="table-wrapper">
@@ -102,12 +106,11 @@ else if (isset($_POST['SKIP']))
 													<li><input type="submit" name="SKIP" value="SKIP" class="primary" />
 													<li><input type="submit" name="PICKUP" value="PICKUP ONLY" class="primary" />
 													<li><input type="button" value="DELIVERY ONLY" class="primary" onclick="location.href='../../Application Layer/ManagePickupDelivery/delivery_option.php'">
-													<li><input type="submit" name="DELIVERY" value="DELIVERY AND PICKUP" class="primary" /></li>
+													<li><input type="submit" name="DELIVERY" value="PICKUP AND DELIVERY" class="primary" /></li>
 									</form>
 									</ul>
 									</div>
 								</section>
-
 						</div>
 					</div>
 
@@ -152,10 +155,8 @@ else if (isset($_POST['SKIP']))
 								<footer id="footer">
 									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 								</footer>
-
 						</div>
 					</div>
-
 			</div>
 
 		<!-- Scripts -->
