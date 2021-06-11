@@ -127,12 +127,27 @@ if(isset($_POST['update'])){
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="#">Service Requests</a></li>
-										<li><a href="user_accounts.php">User Accounts</a></li>
+										<li><a href="../ManageServices/view_incoming_requests.php">INCOMING REQUESTS</a></li>
+										<li><a href="../ManageServices/view_approved_request.php">APPROVED REQUESTS</a></li>
 										<li><a href="#">Cancellation Requests</a></li>
+										<li><a href="user_accounts.php">User Accounts</a></li>
+										
 										<li><a href="logout.php">Logout</a></li>
 									</ul>
 								</nav>
+								
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>Troubleshooting your computer can be a dreadful task, but here at DERCS our technicians will solve your desktop problems quickly and efficiently, to ensure that your computer is running at peak performance.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">dercs.ent@gmail.com</a></li>
+										<li class="icon solid fa-phone">06-2615933</li>
+										<li class="icon solid fa-home">Jalan Mahkota, Kuantan<br />
+										Kuantan, Pahang</li>
+									</ul>
+								</section>
 								
 
 							<!-- Footer -->
