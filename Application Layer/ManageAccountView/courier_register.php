@@ -110,6 +110,19 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/M
 										</li>
 									</ul>
 								</nav>
+
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>Troubleshooting your computer can be a dreadful task, but here at DERCS our technicians will solve your desktop problems quickly and efficiently, to ensure that your computer is running at peak performance.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">dercs.ent@gmail.com</a></li>
+										<li class="icon solid fa-phone">06-2615933</li>
+										<li class="icon solid fa-home">Jalan Mahkota, Kuantan<br />
+										Kuantan, Pahang</li>
+									</ul>
+								</section>
 								
 
 							<!-- Footer -->
