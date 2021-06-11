@@ -1,5 +1,5 @@
 <?php
-require_once '../../Business Services Layer/RepairStatusModel.php';
+require_once '../../Business Services Layer/RepairStatusModel/RepairStatusModel.php';
 
 class RepairStatusController {
 
