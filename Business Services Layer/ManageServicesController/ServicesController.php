@@ -20,13 +20,13 @@ class ManageServicesController{
         $device->request_status = 0;
         
 
-        if ($_POST['damage_desc'] == "Hardware Repairs"){
+        if ($_POST['damage_desc'] = "Hardware Repairs"){
           $device->estimate_price = 150.00;
         }
-        else if ($_POST['damage_desc'] == "Virus Removal"){
+        else if ($_POST['damage_desc'] = "Virus Removal"){
           $device->estimate_price = 80.00;
         }
-        else if ($_POST['damage_desc'] == "Data Recovery & Backup") {
+        else if ($_POST['damage_desc'] = "Data Recovery & Backup") {
           $device->estimate_price = 50.00;
         }
         else {
