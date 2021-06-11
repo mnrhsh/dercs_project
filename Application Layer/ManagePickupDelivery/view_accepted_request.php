@@ -2,9 +2,7 @@
 session_start();
 require_once '../../Business Services Layer/ManagePickupDeliveryController/pickup_delivery_controller.php';
 
-//Test
-//$courier_id = $_SESSION['courier_id'];
-$courier_id = "1";
+$courier_id = $_SESSION['courier_id'];
 
 $viewAcceptedRequest =  new pickupDeliveryController();
 $data = $viewAcceptedRequest->viewAcceptedRequest($courier_id);
@@ -57,6 +55,7 @@ $data = $viewAcceptedRequest->viewAcceptedRequest($courier_id);
 											 <tr>
 											<th><label>Customer Name</label></th>
 											<th><label>Request</label></th>
+											<th><label>Date</label></th>
 											<th><label>Address</label></th>
 											</tr>									
 											<?php
@@ -65,6 +64,7 @@ $data = $viewAcceptedRequest->viewAcceptedRequest($courier_id);
 											<tr>
 											<td><label><?=$row['customer_name']?></label></td>
 											<td><label><?=$row['delivery_type']?></label></td>
+											<td><label><?=$row['delivery_date']?></label></td>
 											<td><label><?=$row['delivery_address']?></label></td>
 											<td>
 												<div class="col-12">
@@ -104,12 +104,12 @@ $data = $viewAcceptedRequest->viewAcceptedRequest($courier_id);
 					<h2>Menu</h2>
 					</header>
 					<ul>
-					<li><a href="index.html">Homepage</a></li>
-					<li><a href="../../Application Layer/ManagePickupDelivery/pickup_delivery_request.php">Pickup Delivery Request</a></li>
-					<li><a href="../../Application Layer/ManagePickupDelivery/view_accepted_request.php">Accepted Request</a></li>
-					<li><a href="#">Profile</a></li>
-					<li><a href="#">Logout</a></li>
-				</ul>
+										<li><a href="../../Application Layer/ManageAccountView/courier_edit_profile.php">Profile</a></li>
+										<li><a href="../../Application Layer/ManagePickupDelivery/pickup_delivery_request.php">Pickup Delivery Request</a></li>
+										<li><a href="../../Application Layer/ManagePickupDelivery/view_accepted_request.php">Accepted Request</a></li>
+										<li><a href="../../Application Layer/ManageAccountView/logout.php">Logout</a></li>
+									</ul>
+								</nav>
 			</nav>
 		<section>
 		<header class="major">

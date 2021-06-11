@@ -129,10 +129,10 @@ if(isset($_POST['update'])){
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="courier_edit_profile.php">Profile</a></li>
-										<li><a href="#">Pickup Delivery Request</a></li>
-										<li><a href="#">Accepted Request</a></li>
-										<li><a href="logout.php">Logout</a></li>
+										<li><a href="../../Application Layer/ManageAccountView/courier_edit_profile.php">Profile</a></li>
+										<li><a href="../../Application Layer/ManagePickupDelivery/pickup_delivery_request.php">Pickup Delivery Request</a></li>
+										<li><a href="../../Application Layer/ManagePickupDelivery/view_accepted_request.php">Accepted Request</a></li>
+										<li><a href="../../Application Layer/ManageAccountView/logout.php">Logout</a></li>
 									</ul>
 								</nav>
 								

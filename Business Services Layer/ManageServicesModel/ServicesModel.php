@@ -55,8 +55,8 @@ class ManageServicesModel{
    // }
 
     function viewDetails(){
-      $sql = "select * from device where device_id=:device_id and customer_id=:customer_id";
-      $args = [':device_id'=>$this->device_id,':customer_id'=>$this->customer_id];
+      $sql = "select * from device where customer_id=:customer_id";
+      $args = [':customer_id'=>$this->customer_id];
       return DB::run($sql, $args);
     }
 
