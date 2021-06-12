@@ -1,7 +1,7 @@
 <?php
 /*
  Filename: controller.php
- Purpose: Controller page for menu
+ Purpose: Controller page for registration and user account
 */
 require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ManageAccountModel/model.php';
 
@@ -25,6 +25,7 @@ class customerController{
         // }
         // return $cust;
     }
+
     //Add customer
     function addCustomer(){
         $cust = new customerModel();
