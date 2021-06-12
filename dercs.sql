@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2021 at 05:41 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Generation Time: Jun 12, 2021 at 04:37 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -81,20 +80,39 @@ CREATE TABLE `device` (
   `serialNo` varchar(20) NOT NULL,
   `device_os` text NOT NULL,
   `damage_type` text NOT NULL,
-  `damage_desc` text NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `request_status` tinyint(1) NOT NULL,
-  `request_date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `estimate_price` double NOT NULL,
-  `quotation_status` tinyint(1) NOT NULL
+  `damage_desc` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `device`
 --
 
-INSERT INTO `device` (`device_id`, `device_type`, `device_model`, `serialNo`, `device_os`, `damage_type`, `damage_desc`, `customer_id`, `request_status`, `request_date`, `estimate_price`, `quotation_status`) VALUES
-(111, 'Laptop', 'MacBook', 'MCP-01-001-A', 'Windows', 'Hardware Repairs', 'Screen cracked', 1, 0, '2021-06-10 20:57:27', 30, 1);
+INSERT INTO `device` (`device_id`, `device_type`, `device_model`, `serialNo`, `device_os`, `damage_type`, `damage_desc`) VALUES
+(1, 'on', 'Acer', '6714H-001-004HB', 'on', '', ''),
+(2, 'Laptop', 'Acer', '6714H-001-004HB', 'Windows', '', ''),
+(3, 'Laptop', 'MacBook', 'TG710-00-11', 'Mac OS', '', ''),
+(4, 'Laptop', 'Acer', '6714H-001-004HB', 'Windows', 'virus', 'I dont have antivirus installed in my laptop and my files deleted themselves'),
+(5, 'Laptop', 'Acer', '6714H-001-004HB', 'Windows', 'Hardware Repairs', 'My laptop screen went blank after sleep mode'),
+(6, 'Desktop Computer', 'MacBook', 'TG710-00-11', 'Mac OS', 'Virus Removal', 'Files deleted without noticing '),
+(7, 'Desktop Computer', 'Acer', 'TG710-00-11', 'Windows', 'Virus Removal', 'Files deleted without notice'),
+(8, 'Laptop', 'Acer', '6714H-001-004HB', 'Windows', 'Data Recovery & Backup', 'I wanted to reset my laptop but I am afraid that I might lose any files'),
+(9, 'Desktop Computer', 'MacBook', '6714H-001-004HB', 'Windows', 'Virus Removal', 'Remove Virus from computer'),
+(10, 'Desktop Computer', 'asdasd', 'asdasdas', 'Windows', 'Data Recovery & Backup', 'asdasdasdasd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `payment_id` varchar(20) NOT NULL,
+  `payment_method` char(20) NOT NULL,
+  `bank_type` char(50) NOT NULL,
+  `payment_desc` text NOT NULL,
+  `total_price` float NOT NULL,
+  `payment_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -130,47 +148,28 @@ CREATE TABLE `repair_status` (
   `repair_details` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `staff`
+-- Dumping data for table `repair_status`
 --
 
-CREATE TABLE `staff` (
-  `staff_id` int(11) NOT NULL,
-  `staff_username` varchar(255) NOT NULL,
-  `staff_password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `staff`
---
-
-INSERT INTO `staff` (`staff_id`, `staff_username`, `staff_password`) VALUES
-(1, 'staff', 'staff123');
+INSERT INTO `repair_status` (`repair_id`, `repair_quotation_id`, `job_performed`, `job_price`, `repair_cost`, `repair_status`, `repair_details`) VALUES
+(1, 232, 'sasdsda', 12312, 232323, 'adasda', 'hjfghfgh');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `courier`
---
-ALTER TABLE `courier`
-  ADD PRIMARY KEY (`courier_id`);
-
---
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`customer_id`);
-
---
 -- Indexes for table `device`
 --
 ALTER TABLE `device`
-  ADD PRIMARY KEY (`device_id`),
-  ADD KEY `customer_fk` (`customer_id`);
+  ADD PRIMARY KEY (`device_id`);
+
+--
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`payment_id`);
 
 --
 -- Indexes for table `pickupdelivery`
@@ -185,44 +184,20 @@ ALTER TABLE `repair_status`
   ADD PRIMARY KEY (`repair_id`);
 
 --
--- Indexes for table `staff`
---
-ALTER TABLE `staff`
-  ADD PRIMARY KEY (`staff_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `courier`
---
-ALTER TABLE `courier`
-  MODIFY `courier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `customer`
---
-ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `device`
 --
 ALTER TABLE `device`
-  MODIFY `device_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `device_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `pickupdelivery`
 --
 ALTER TABLE `pickupdelivery`
   MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `staff`
---
-ALTER TABLE `staff`
-  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
