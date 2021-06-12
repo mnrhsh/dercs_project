@@ -59,9 +59,13 @@ if(isset($_POST['SUBMIT']))
 											<tbody>
 											 <tr>
 											<td><label>Payment Method</label></td>
-											<td>Online Payment <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> Cash On Delivery <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
-												<div id="ifYes" style="visibility:hidden">
-												Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> No <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
+											<td>
+											<input type="radio" name="contact" id="cash" value="cash" />
+											<label for="cash">Cash on Delivery</label>
+											<input type="radio" name="contact" id="onlinepayment" value="onlinepayment" />
+											<label for="onlinepayment">Online Payment</label>
+											</td>
+													<tr>
 													<td><label>Bank type</label></td>
 													<td>
 													<select name="bank_type" id="bank_type">
