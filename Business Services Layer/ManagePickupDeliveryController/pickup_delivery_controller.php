@@ -16,11 +16,10 @@ class pickupDeliveryController
         $addPickup->delivery_address = $_POST['delivery_address'];
         $addPickup->delivery_note = $_POST['delivery_note'];
         $addPickup->delivery_status = "Requested";
-        //put payment link 
         if($addPickup->addPickup()){
             $message = "Request Successfully!";
         echo "<script type='text/javascript'>alert('$message');
-        window.location = '../../Application Layer/ManagePickupDelivery/pickup_option.php';</script>";
+        window.location = '../../Application Layer/ManagePayment/insert_payment_details.php';</script>";
         }
         else{
             $message = "Request Failed!";
@@ -67,7 +66,7 @@ class pickupDeliveryController
         if($addDelivery->addDelivery()){
             $message = "Request Successfully!";
         echo "<script type='text/javascript'>alert('$message');
-        window.location = '../../Application Layer/ManagePickupDelivery/delivery_option.php';</script>";
+        window.location = '../../Application Layer/ManagePayment/insert_payment_details.php';</script>";
         }
         else{
             $message = "Request Failed!";
@@ -82,15 +81,10 @@ class pickupDeliveryController
         $removeData->customer_id = $customer_id;
         $removeData->delivery_status = "Requested"; 
         if($removeData->removeData()){
-            $message = "Skip Pickup and Delivery!";
         //put payment link 
-        echo "<script type='text/javascript'>alert('$message');
-        window.location = '../../Application Layer/ManagePickupDelivery/pickup_option.php';</script>";
-        }
-        else{
-            $message = "Skip Failed!";
-        echo "<script type='text/javascript'>alert('$message');
-        window.location = '../../Application Layer/ManagePickupDelivery/pickup_option.php';</script>";
+        echo "<script type='text/javascript'>
+        window.location = '../../Application Layer/ManagePayment/insert_payment_details.php';
+        </script>";
         }
     }
 
