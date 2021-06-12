@@ -3,6 +3,7 @@ require_once '../../Business Services Layer/RepairStatusModel/RepairStatusModel.
 
 class RepairStatusController {
 
+    //Add data into repair status after staff add the status
     function addRepair($device_id, $customer_id){
         $request = new RepairStatusModel();
         $request->repair_device_id = $device_id;
@@ -20,6 +21,7 @@ class RepairStatusController {
         }
     }
     
+    //View all status for a customer
     function viewAllStatus($customer_id){
         $request = new RepairStatusModel();
         $request->repair_customer_id = $customer_id;
@@ -32,23 +34,20 @@ class RepairStatusController {
         return $request->viewStatusDetails();
     }
     
-    function cancelRepair($id){
-        $request = new RepairStatusModel();
-        //header('Location: dashboard');
-        //return $order->deleteOrder($id);
-    }
-    
+    //View all request accepted by staff
     function viewAllRequest(){
         $request = new RepairStatusModel();
         return $request->viewAllRequest();
     }
     
+    //view request status details for customer
     function viewRequestStatus($device_id){
         $request = new RepairStatusModel();
         $request->repair_device_id= $device_id;
         return $request->viewRequestStatus();
     }
     
+     //edit repair status by staff
     function editRequestStatus($device_id){
         $request = new RepairStatusModel();
         $request->repair_device_id = $device_id;
@@ -64,21 +63,13 @@ class RepairStatusController {
         }
     }
     
-    function updateFinishedRequest(){
-        $request = new RepairStatusModel();
-        $request->device_id= $_POST['device_id'];
-        if($request->updateFinishedRequest()){
-            $message = "The order has been marked as finished!";
-		echo "<script type='text/javascript'>alert('$message');
-		window.location = 'staff_view_completed_request.php?repair_id=".$_POST['repair_id']."';</script>";
-        }
-    }
-    
+    //view request with 'Repairing' status for staff
     function viewRepairingRequest(){
         $request = new RepairStatusModel();
         return $request->viewRepairingRequest();
     }
     
+     //view request with 'Finished' status for staff
     function viewCompletedRequest(){
         $request = new RepairStatusModel();
         return $request->viewCompletedRequest();
