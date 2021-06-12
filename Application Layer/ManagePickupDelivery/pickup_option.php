@@ -131,10 +131,10 @@ else if (isset($_POST['SKIP']))
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="../ManageAccountView/customer_edit_profile.php">PROFILE</a></li>
-										<li><a href="service_request_form.php">REQUEST FOR SERVICE</a></li>
-										<li><a href="">NOTIFICATION</a></li>
-										<li><a href="../ManageAccountView/logout.php">LOGOUT</a></li>
+									<li><a href="../../Application Layer/ManageAccountView/courier_edit_profile.php">Profile</a></li>
+									<li><a href="../ManageServices/service_request_form.php">Request for Service</a></li>
+									<li><a href="../ManageRepairStatusView/customer_view_all_status.php">Repair Status</a></li>
+									<li><a href="../../Application Layer/ManageAccountView/logout.php">Logout</a></li>
 								</nav>
 
 							<!-- Section -->
