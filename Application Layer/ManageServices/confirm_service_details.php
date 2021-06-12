@@ -147,7 +147,7 @@ else if(isset($_POST['reject'])){
 									<ul>
 										<li><a href="../ManageAccountView/customer_edit_profile.php">PROFILE</a></li>
 										<li><a href="service_request_form.php">REQUEST FOR SERVICE</a></li>
-										<li><a href="">NOTIFICATION</a></li>
+										<li><a href="../ManageRepairStatusView/customer_view_all_status.php">REPAIR STATUS</a></li>
 										<li><a href="../ManageAccountView/logout.php">LOGOUT</a></li>
 								
 								</nav>

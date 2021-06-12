@@ -123,10 +123,11 @@ if(isset($_POST['delete'])){
 									<ul>
 										<li><a href="../ManageServices/view_incoming_requests.php">INCOMING REQUESTS</a></li>
 										<li><a href="../ManageServices/view_approved_request.php">APPROVED REQUESTS</a></li>
-										<li><a href="#">Cancellation Requests</a></li>
-										<li><a href="user_accounts.php">User Accounts</a></li>
+										<li><a href="../ManageRepairStatusView/staff_view_repairing_request.php">REPAIRING REQUESTS</a></li>
+                                        <li><a href="../ManageRepairStatusView/staff_view_completed_request.php">COMPLETED REQUESTS</a></li>
+										<li><a href="../ManageAccountView/user_accounts.php">User Accounts</a></li>
 										
-										<li><a href="logout.php">Logout</a></li>
+										<li><a href="../ManageAccountView/logout.php">Logout</a></li>
 									</ul>
 								</nav>
 								

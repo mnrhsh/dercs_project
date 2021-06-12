@@ -99,24 +99,22 @@ $data = $device->viewDevice($device_id);
 					<div id="sidebar">
 						<div class="inner">
 
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
-
 							<!-- Menu -->
 								<nav id="menu">
 									<header class="major">
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.html">INCOMING REQUESTS</a></li>
-										<li><a href="generic.html">APPROVED REQUESTS</a></li>
+										<li><a href="../ManageServices/view_incoming_requests.php">INCOMING REQUESTS</a></li>
+										<li><a href="../ManageServices/view_approved_request.php">APPROVED REQUESTS</a></li>
+										<li><a href="../ManageRepairStatusView/staff_view_repairing_request.php">REPAIRING REQUESTS</a></li>
+                                        <li><a href="../ManageRepairStatusView/staff_view_completed_request.php">COMPLETED REQUESTS</a></li>
+										<li><a href="user_accounts.php">User Accounts</a></li>
+										
+										<li><a href="../ManageAccountView/logout.php">Logout</a></li>
+									</ul>
 								</nav>
-
-							<!-- Section -->
+								
 								<section>
 									<header class="major">
 										<h2>Get in touch</h2>
@@ -129,10 +127,11 @@ $data = $device->viewDevice($device_id);
 										Kuantan, Pahang</li>
 									</ul>
 								</section>
+								
 
 							<!-- Footer -->
 								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+									<p class="copyright">&copy;All rights reserved. DERCS Computer Repair Shop Management System.</p>
 								</footer>
 
 						</div>

@@ -1,16 +1,16 @@
 <?php
 require_once '../../Business Services Layer/RepairStatusController/RepairStatusController.php';
 
-$repair_id = $_GET['repair_id'];
+$device_id = $_GET['repair_device_id'];
 
 $request = new RepairStatusController();
 
-$data = $request->viewRequestStatus($repair_id);
+$data = $request->viewRequestStatus($device_id);
 
-if (isset($_POST['submit'])) {
+if(isset($_POST['submit'])){
 
-	$request->editRequestStatus($repair_id);
-	
+    $request->editRequestStatus($device_id);
+
 }
 ?>
 <!DOCTYPE HTML>
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 -->
 <html>
 	<head>
-		<title>Elements - Editorial by HTML5 UP</title>
+		<title>DERCS | UPDATE STATUS</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -49,21 +49,18 @@ if (isset($_POST['submit'])) {
 
 							<!-- Content -->
 								<section>
-								    <h2>Edit Repair Status</h2>
-
+								    <h2>Update Repair Status</h2>
 									<!-- Content -->
                                     <form action="" method="post" enctype="multipart/form-data">
-                                        <?php
-							if ($data != null) {
-
-								foreach ($data as $row) {
-									?>
+                                        
 										<div class="row">
-												<table class="alt"><tr>
-                											<td>Repair ID</td>
-                											<td><?php echo $row['repair_id'];?></td>
-            											</tr>
+                                            <?php
+            								        foreach($data as $row){
+            								    ?>
+            										  	
+												<table class="alt">
             											<tr>
+                                                            
                 											<td>Job Performed</td>
                 											<td><input type="text" class="demo-name" name="job_performed" value="<?php echo $row['job_performed'];?>"></td>
             											</tr>
@@ -74,31 +71,28 @@ if (isset($_POST['submit'])) {
             											<tr>
                 											<td>Repair Status</td>
                                                            <td> <select name="repair_status" class="demo-name">
-                                                                <option value="Repairing">Repairing</option>
-                                                              <option value="Finished">Finished</option>
-                                                                <option value="Cannot">Cannot be repaired</option>
+                                                                <option value="Repairing" <?=$row['repair_status'] == 'Repairing' ? ' selected="selected"' : '';?>>Repairing</option>
+                                                              <option value="Finished" <?=$row['repair_status'] == 'Finished' ? ' selected="selected"' : '';?>>Finished</option>
+                                                                <option value="Cannot" <?=$row['repair_status'] == 'Cannot' ? ' selected="selected"' : '';?>>Cannot be repaired</option>
                                                                 </select>
                                                             </td>
             											</tr>
             											<tr>
                 											<td>Repair Details</td>
                 											<td><input type="text" class="demo-name" name="repair_details" value="<?php echo $row['repair_details'];?>"></td>
-            											</tr></table>
-											
+            											</tr>
+                                            </table>
+											<?php } ?> 
 										</div>
                                         <div class="row">
 											<div class="col-8 col-12-small">
 											</div>
-											<div class="col-4 col-12-small">     <input type="submit" name="submit" class="button primary" value="UPDATE">
+											<div class="col-4 col-12-small">     <input type="submit" name="submit" class="button primary" value="SAVE"  onclick="return confirm('Are you sure you want to change the repair status?')">
 											</div>
 											
 										</div>
-                                        <?php
-								}
-							}
-							?>
-                                    </form>
                                         
+                                    </form>
 								</section>
 						</div>
 					</div>
@@ -107,89 +101,39 @@ if (isset($_POST['submit'])) {
 					<div id="sidebar">
 						<div class="inner">
 
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
-
 							<!-- Menu -->
 								<nav id="menu">
 									<header class="major">
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
-										<li>
-											<span class="opener">Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
+										<li><a href="../ManageServices/view_incoming_requests.php">INCOMING REQUESTS</a></li>
+										<li><a href="../ManageServices/view_approved_request.php">APPROVED REQUESTS</a></li>
+										<li><a href="../ManageRepairStatusView/staff_view_repairing_request.php">REPAIRING REQUESTS</a></li>
+                                        <li><a href="../ManageRepairStatusView/staff_view_completed_request.php">COMPLETED REQUESTS</a></li>
+										<li><a href="../ManageAccountView/user_accounts.php">User Accounts</a></li>
+										
+										<li><a href="../ManageAccountView/logout.php">Logout</a></li>
 									</ul>
 								</nav>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Ante interdum</h2>
-									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
-								</section>
-
-							<!-- Section -->
+								
 								<section>
 									<header class="major">
 										<h2>Get in touch</h2>
 									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+									<p>Troubleshooting your computer can be a dreadful task, but here at DERCS our technicians will solve your desktop problems quickly and efficiently, to ensure that your computer is running at peak performance.</p>
 									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
+										<li class="icon solid fa-envelope"><a href="#">dercs.ent@gmail.com</a></li>
+										<li class="icon solid fa-phone">06-2615933</li>
+										<li class="icon solid fa-home">Jalan Mahkota, Kuantan<br />
+										Kuantan, Pahang</li>
 									</ul>
 								</section>
+								
 
 							<!-- Footer -->
 								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+									<p class="copyright">&copy;All rights reserved. DERCS Computer Repair Shop Management System.</p>
 								</footer>
 
 						</div>

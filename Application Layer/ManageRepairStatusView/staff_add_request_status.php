@@ -1,15 +1,16 @@
 <?php
-error_reporting("0");
-require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ManageServicesController/ServicesController.php';
+require_once '../../Business Services Layer/RepairStatusController/RepairStatusController.php';
 
-$device = new ManageServicesController();
-$data = $device->viewAllAccepted();
+$device_id = $_GET['device_id'];
+$customer_id = $_GET['customer_id'];
 
-if(isset($_POST['delete'])){
-    $device->delete();
+$request = new RepairStatusController();
+
+if(isset($_POST['submit'])){
+
+    $request->addRepair($device_id, $customer_id);
+
 }
-
-
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -19,10 +20,10 @@ if(isset($_POST['delete'])){
 -->
 <html>
 	<head>
-		<title>DERCS</title>
+		<title>DERCS | ADD REPAIR STATUS</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="is-preload">
 
@@ -35,7 +36,7 @@ if(isset($_POST['delete'])){
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>Dercs</strong> Computer Repair Shop</a>
+									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -47,43 +48,49 @@ if(isset($_POST['delete'])){
 
 							<!-- Content -->
 								<section>
-									<header class="main">
-									<h2>Approved Requests</h2>
-									</header>
-
-									<!-- service form -->
-										<div class="table-wrapper">
-											<table>
-												<thead>
-													<th>Type</th>
-													<th>Model</th>
-													<th>Damage</th>
-													<th>Action</th>
-												</thead>
-												<tbody><form action="" method="POST">
-													  <?php
-            										  $i = 1;
-            										  foreach($data as $row){
-               										  echo "<tr>"
-                       								. "<td>".$row['device_type']."</td>"
-                       								. "<td>".$row['device_model']."</td>"
-                       								. "<td>".$row['damage_type']."</td>";
-               											?>
-               										<td>
-                    								<input type="button" onclick="location.href='viewt_details.php?device_id=<?=$row['device_id']?>'" value="VIEW">&nbsp
-                                                    <input type="button" onclick="location.href='../ManageRepairStatusView/staff_add_request_status.php?device_id=' + <?=$row['device_id'] ?>  + '&customer_id=' + <?=$row['customer_id']?>" value="ADD STATUS" class="primary">&nbsp
-                
-                										</td>
-               									</form></tbody>
-               									<?php
-               									$i++;
-               									echo "</tr>";
-               									}
-            									?>
-            								</table>
-
+								    <h2>Add Repair Status</h2>
+									<!-- Content -->
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                        
+										<div class="row">
+                                            
+            										  	
+												<table class="alt">
+            											<tr>
+                                                            
+                											<td>Job Performed</td>
+                											<td><input type="text" class="demo-name" name="job_performed" value="<?php echo $row['job_performed'];?>"></td>
+            											</tr>
+            											<tr>
+                											<td>Repair Cost</td>
+                											<td><input type="text" class="demo-name" name="repair_cost"></td>
+            											</tr>
+            											<tr>
+                											<td>Repair Status</td>
+                                                           <td> <select name="repair_status" class="demo-name">
+                                                                <option value="Repairing">Repairing</option>
+                                                              <option value="Finished">Finished</option>
+                                                                <option value="Cannot">Cannot be repaired</option>
+                                                                </select>
+                                                            </td>
+            											</tr>
+            											<tr>
+                											<td>Repair Details</td>
+                											<td><input type="text" class="demo-name" name="repair_details"></td>
+            											</tr>
+                                            </table>
+											
+										</div>
+                                        <div class="row">
+											<div class="col-8 col-12-small">
+											</div>
+											<div class="col-4 col-12-small">     <input type="submit" name="submit" class="button primary" value="SAVE">
+											</div>
+											
+										</div>
+                                        
+                                    </form>
 								</section>
-
 						</div>
 					</div>
 

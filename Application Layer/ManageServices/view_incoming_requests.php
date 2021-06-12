@@ -93,29 +93,39 @@ if (isset($_POST['submit'])) {
 					<div id="sidebar">
 						<div class="inner">
 
-
 							<!-- Menu -->
 								<nav id="menu">
 									<header class="major">
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="view_incoming_requests.php">INCOMING REQUESTS</a></li>
-										<li><a href="view_approved_request.php">APPROVED REQUESTS</a></li>
-										<li><a href="#">Cancellation Requests</a></li>
+										<li><a href="../ManageServices/view_incoming_requests.php">INCOMING REQUESTS</a></li>
+										<li><a href="../ManageServices/view_approved_request.php">APPROVED REQUESTS</a></li>
+										<li><a href="../ManageRepairStatusView/staff_view_repairing_request.php">REPAIRING REQUESTS</a></li>
+                                        <li><a href="../ManageRepairStatusView/staff_view_completed_request.php">COMPLETED REQUESTS</a></li>
 										<li><a href="../ManageAccountView/user_accounts.php">User Accounts</a></li>
 										
-										<li><a href="logout.php">Logout</a></li>
+										<li><a href="../ManageAccountView/logout.php">Logout</a></li>
 									</ul>
 								</nav>
-
-							
-
-							<!-- Section -->
+								
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>Troubleshooting your computer can be a dreadful task, but here at DERCS our technicians will solve your desktop problems quickly and efficiently, to ensure that your computer is running at peak performance.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">dercs.ent@gmail.com</a></li>
+										<li class="icon solid fa-phone">06-2615933</li>
+										<li class="icon solid fa-home">Jalan Mahkota, Kuantan<br />
+										Kuantan, Pahang</li>
+									</ul>
+								</section>
+								
 
 							<!-- Footer -->
 								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+									<p class="copyright">&copy;All rights reserved. DERCS Computer Repair Shop Management System.</p>
 								</footer>
 
 						</div>

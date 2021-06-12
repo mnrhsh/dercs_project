@@ -4,11 +4,24 @@ require_once '../../libs/database.php';
 
 class RepairStatusModel{
 	
-	public $repair_id, $job_performed, $job_price, $repair_cost, $repair_status, $repair_details;
+	public $repair_id, $repair_device_id, $repair_customer_id, $job_performed, $job_price, $repair_cost, $repair_status, $repair_details;
 	
+    function addRepair(){
+		$sql = "insert into repair_status(repair_device_id, repair_customer_id, job_performed, repair_cost, repair_status, repair_details) values(:repair_device_id, :repair_customer_id,:job_performed, :repair_cost, :repair_status, :repair_details)";
+       
+
+        $args = [':repair_device_id'=>$this->repair_device_id, ':repair_customer_id'=>$this->repair_customer_id, ':job_performed'=>$this->job_performed, ':repair_cost'=>$this->repair_cost, ':repair_status'=>$this->repair_status, ':repair_details'=>$this->repair_details];
+
+        $stmt = DB::run($sql, $args);
+        $count = $stmt->rowCount();
+
+        return $count;
+	}
+    
     function viewAllStatus(){
-		$sql = "select * FROM repair_status";
-		return DB::run($sql);
+		$sql = "select * FROM repair_status where repair_customer_id=:repair_customer_id";
+        $args = [':repair_customer_id'=>$this->repair_customer_id];
+		return DB::run($sql, $args);
 	}
     
 	/*function readyOrder($id){
@@ -41,11 +54,10 @@ class RepairStatusModel{
 		$args = [ ':repair_status'=>'Repairing'];
 		return DB::run($sql, $args);
 	}
-
     
     function viewRequestStatus(){
-		$sql = "select * FROM repair_status where repair_id=:repair_id";
-        $args = [':repair_id'=>$this->repair_id];
+		$sql = "select * FROM repair_status where repair_device_id=:repair_device_id";
+        $args = [':repair_device_id'=>$this->repair_device_id];
 		return DB::run($sql,$args);
 	}
     
@@ -119,10 +131,10 @@ class RepairStatusModel{
 	function editRequestStatus(){
 
 
-			$sql = "update repair_status set job_performed=:job_performed, job_price=:job_price, repair_cost=:repair_cost, repair_status=:repair_status, repair_details=:repair_details where repair_id=:repair_id";
+			$sql = "update repair_status set repair_device_id=:repair_device_id, job_performed=:job_performed, job_price=:job_price, repair_cost=:repair_cost, repair_status=:repair_status, repair_details=:repair_details where repair_device_id=:repair_device_id";
 
 			$args = [
-				':repair_id'=>$this->repair_id, 
+				':repair_device_id'=>$this->repair_device_id, 
 				':job_performed'=>$this->job_performed, 
 				':job_price'=>$this->job_price, 
                 ':repair_cost'=>$this->repair_cost,
@@ -140,6 +152,12 @@ class RepairStatusModel{
 		return DB::run($sql, $args);
 	}
 
+    function viewRepairingRequest(){
+		$sql = "select * FROM repair_status where repair_status='Repairing'";
+		$args = [ ':repair_status'=>'Repairing' ];
+		return DB::run($sql, $args);
+	}
+    
     function viewCompletedRequest(){
 		$sql = "select * FROM repair_status where repair_status='Finished'";
 		$args = [ ':repair_status'=>'Finished' ];

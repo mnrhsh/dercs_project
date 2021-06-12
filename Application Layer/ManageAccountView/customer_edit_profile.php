@@ -131,7 +131,7 @@ if(isset($_POST['update'])){
 									<ul>
 										<li><a href="customer_edit_profile.php">Profile</a></li>
 										<li><a href="../ManageServices/service_request_form.php">Request for Service</a></li>
-										<li><a href="#">Notification</a></li>
+										<li><a href="../ManageRepairStatusView/customer_view_all_status.php">Repair Status</a></li>
 										<li><a href="logout.php">Logout</a></li>
 									</ul>
 								</nav>
