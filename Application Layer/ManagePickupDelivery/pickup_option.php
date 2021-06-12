@@ -132,9 +132,9 @@ else if (isset($_POST['SKIP']))
 									</header>
 									<ul>
 									<li><a href="../../Application Layer/ManageAccountView/courier_edit_profile.php">Profile</a></li>
-										<li><a href="../../Application Layer/ManagePickupDelivery/pickup_delivery_request.php">Pickup Delivery Request</a></li>
-										<li><a href="../../Application Layer/ManagePickupDelivery/view_accepted_request.php">Accepted Request</a></li>
-										<li><a href="../../Application Layer/ManageAccountView/logout.php">Logout</a></li>
+									<li><a href="../ManageServices/service_request_form.php">Request for Service</a></li>
+									<li><a href="../ManageRepairStatusView/customer_view_all_status.php">Repair Status</a></li>
+									<li><a href="../../Application Layer/ManageAccountView/logout.php">Logout</a></li>
 								</nav>
 
 							<!-- Section -->
