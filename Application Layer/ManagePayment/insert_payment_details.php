@@ -3,22 +3,16 @@ session_start();
 require_once '../../Business Services Layer/ManagePaymentController/PaymentController.php';
 
 //User session
-$customer_id = $_SESSION['customer_id'];
+$payment_id = $_SESSION['payment_id'];
 
-$addPayment = new PaymentController();
+$makePayment = new PaymentController();
 
 // Code for <<SUBMIT>> button
 if(isset($_POST['SUBMIT']))
 	{
-		$addDelivery->addDelivery($customer_id);
+		$makePayment->makePayment($payment_id);
 	}
 
-// Code for <<BACK>> button
-else if (isset($_POST['BACK']))
-	{
-		$removeData = new pickupDeliveryController();
-	    $removeData->removeData2($customer_id);
-	}
 ?>
 
 <!DOCTYPE HTML>
@@ -65,45 +59,32 @@ else if (isset($_POST['BACK']))
 											<tbody>
 											 <tr>
 											<td><label>Payment Method</label></td>
-											<td>Online Payment <input type="radio" onclick="javascript:paymentCheck();" name="payment" id="onlineCheck"> No <input type="radio" onclick="javascript:paymentCheck();" name="payment" id="cashCheck"><br>
-												<div id="ifOnline" style="visibility:hidden">
+											<td>Online Payment <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> Cash On Delivery <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
+												<div id="ifYes" style="visibility:hidden">
+												Yes <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="yesCheck"> No <input type="radio" onclick="javascript:yesnoCheck();" name="yesno" id="noCheck"><br>
 													<td><label>Bank type</label></td>
-													
-													What can we do to accommodate you?  <input type='text' id='acc' name='acc'>
+													<td>
+													<select name="bank_type" id="bank_type">
+													<option value="Bank Islam">Bank Islam</option>
+													<option value="Maybank Berhad">Maybank Berhad</option>
+													<option value="Public Bank">Public Bank</option>
+													</select>
+													</tr>
+													<tr>
+													<td><label>Total Price</label></td>
+													<td><textarea type="number" id="total_price" name="total_price"></textarea></td>
+													</tr>
+													<td><label>Payment Description</label></td>
+													<td><textarea type="text" id="payment_desc" name="payment_desc"></textarea></td>
+													</tr>
 												</div></td>
-											</tr>
-											<tr>
-											<td><label>Time</label></td>
-											<td>
-											<select name="delivery_time" id="delivery_time">
-												<option value="09.00 am">09.00 am</option>
-												<option value="10.00 am">10.00 am</option>
-												<option value="11.00 am">11.00 am</option>
-												<option value="12.00 pm">12.00 pm</option>
-												<option value="01.00 pm">01.00 pm</option>
-												<option value="02.00 pm">02.00 pm</option>
-												<option value="03.00 pm">03.00 pm</option>
-												<option value="04.00 pm">04.00 pm</option>
-												<option value="05.00 pm">05.00 pm</option>
-												<option value="06.00 pm">06.00 pm</option>
-											</select>
-											</tr>
-											<tr>
-											<td><label>Pickup Address</label></td>
-											<td><textarea type="text" id="delivery_address" name="delivery_address"></textarea></td>
-											</tr>
-											<tr>
-											<td><label>Pickup Note</label></td>
-											<td><textarea type="text" id="delivery_note" name="delivery_note"></textarea></td>
-											</tr>
 											</tr>
 											</tbody>
 											</table>
 										</div>	
 											<div class="col-12">
 												<ul class="actions">
-													<li><input type="submit" name="BACK" value="BACK" class="primary" /></li>
-													<li><input type="submit" name="SUBMIT" value="SUBMIT" class="primary" /></li>
+													<li><input type="submit" name="CONTINUE" value="CONTINUE" class="primary" /></li>
 									</form>
 									</ul>
 									</div>
@@ -132,6 +113,7 @@ else if (isset($_POST['BACK']))
 										<li><a href="../ManageAccountView/customer_edit_profile.php">PROFILE</a></li>
 										<li><a href="service_request_form.php">REQUEST FOR SERVICE</a></li>
 										<li><a href="">NOTIFICATION</a></li>
+										<li><a href="../ManagePayment/insert_payment_details.php">PAYMENT</a></li>
 										<li><a href="../ManageAccountView/logout.php">LOGOUT</a></li>
 								</nav>
 
