@@ -75,8 +75,8 @@ class ManageServicesController{
         //fgfg;
         $message = "Thank you for using our service. Your request has been sent! We will respond to your request within 1 hour.";
       echo "<script type='text/javascript'>alert('$message');
-        window.location = '../../Application Layer/ManageServices/service_request_form.php';</script>";
-      }
+      window.location = '../../Application Layer/ManagePickupDelivery/pickup_option.php';</script>";
+    }
 
     }
       
