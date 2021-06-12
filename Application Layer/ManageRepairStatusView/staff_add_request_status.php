@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+									<a href="index.html" class="logo"><strong>DERCS</strong></a>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -52,10 +52,10 @@ if(isset($_POST['submit'])){
 									<!-- Content -->
                                     <form action="" method="post" enctype="multipart/form-data">
                                         
-										<div class="row">
+										<div class="table-wrapper">
                                             
             										  	
-												<table class="alt">
+												<table>
             											<tr>
                                                             
                 											<td>Job Performed</td>
@@ -81,13 +81,12 @@ if(isset($_POST['submit'])){
                                             </table>
 											
 										</div>
-                                        <div class="row">
-											<div class="col-8 col-12-small">
+                                        <div class="col-12">
+												<ul class="actions">
+													<li><input type="submit" name="submit" class="button primary" value="SAVE"></li>
+													<li><input type="reset" value="RESET" /></li>
+												</ul>
 											</div>
-											<div class="col-4 col-12-small">     <input type="submit" name="submit" class="button primary" value="SAVE">
-											</div>
-											
-										</div>
                                         
                                     </form>
 								</section>

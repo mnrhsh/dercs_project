@@ -37,7 +37,7 @@ if(isset($_POST['submit'])){
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+									<a href="index.html" class="logo"><strong>DERCS</strong> Computer Repair Shop</a>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -53,12 +53,12 @@ if(isset($_POST['submit'])){
 									<!-- Content -->
                                     <form action="" method="post" enctype="multipart/form-data">
                                         
-										<div class="row">
                                             <?php
             								        foreach($data as $row){
             								    ?>
             										  	
-												<table class="alt">
+                                            <div class="table-wrapper">
+												<table><tbody>
             											<tr>
                                                             
                 											<td>Job Performed</td>
@@ -80,17 +80,14 @@ if(isset($_POST['submit'])){
             											<tr>
                 											<td>Repair Details</td>
                 											<td><input type="text" class="demo-name" name="repair_details" value="<?php echo $row['repair_details'];?>"></td>
-            											</tr>
+            											</tr></tbody>
                                             </table>
-											<?php } ?> 
-										</div>
-                                        <div class="row">
-											<div class="col-8 col-12-small">
-											</div>
-											<div class="col-4 col-12-small">     <input type="submit" name="submit" class="button primary" value="SAVE"  onclick="return confirm('Are you sure you want to change the repair status?')">
-											</div>
+											<?php } ?>
+                                            </div>
+											<div class="col-12">
+                                                <input type="submit" name="submit" class="button primary" value="SAVE"  onclick="return confirm('Are you sure you want to change the repair status?')">
+											</div>    
 											
-										</div>
                                         
                                     </form>
 								</section>
