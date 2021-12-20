@@ -1,7 +1,7 @@
 <?php
 /*
  Filename: login.php
- Purpose: For login purposes for customer, courier and staff
+ Purpose: For login purposes for customer, courier and staffs
 */
 require_once $_SERVER["DOCUMENT_ROOT"].'/dercs_project/Business Services Layer/ManageAccountController/login_controller.php';
 session_start();
